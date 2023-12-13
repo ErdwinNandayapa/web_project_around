@@ -5,4 +5,5 @@
   padding-top: 45px;
   width: 100%;
   justify-content: flex-start;
+  flex-wrap: wrap;
 }

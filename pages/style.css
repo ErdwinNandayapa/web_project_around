@@ -2,5 +2,4 @@
 @import url(../blocks/page.css);
 
 @import url(../blocks/header/header.css);
-@import url(../blocks/header/__title/header__title.css);
-@import url(../blocks/header/__title/-side/header__title-side.css);
+@import url(../blocks/header/__logo/header__logo.css);
