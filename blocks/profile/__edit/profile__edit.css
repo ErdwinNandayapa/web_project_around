@@ -1,0 +1,15 @@
+.profile__edit {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  flex-basis: 46%;
+  margin: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__edit {
+    align-items: center;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+}
