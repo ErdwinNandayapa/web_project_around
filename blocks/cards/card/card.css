@@ -1,0 +1,27 @@
+.card {
+  background: #fff;
+  border-radius: 11px;
+  overflow: hidden;
+  height: 361px;
+  width: 282px;
+}
+
+@media screen and (max-width: 768px) {
+  .cards {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0rem;
+    grid-row-gap: 1rem;
+    margin-left: 26px;
+  }
+}
