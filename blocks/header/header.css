@@ -3,7 +3,7 @@
   border-bottom: 2px solid #ccc;
   max-width: 880px;
   padding-top: 45px;
-  width: 90%;
+  width: 100%;
   justify-content: flex-start;
   flex-wrap: wrap;
   padding-bottom: 1rem;
@@ -20,11 +20,6 @@ body {
   line-height: 1.5;
   background-color: #000;
   color: #fff;
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-wrap: wrap;
-  align-content: center; */
 }
 
 @media screen and (max-width: 768px) {
