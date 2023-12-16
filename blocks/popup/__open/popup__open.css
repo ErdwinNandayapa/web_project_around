@@ -55,16 +55,3 @@
     height: 46px;
   }
 }
-
-@media screen and (max-width: 768px) {
-  .popup__content {
-    max-width: 282px;
-    height: 322px;
-  }
-  .button__type-save {
-    width: 238px;
-    height: 46px;
-  }
-}
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-}
