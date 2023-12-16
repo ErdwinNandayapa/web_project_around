@@ -1,0 +1,70 @@
+@keyframes zoomIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.popup_open {
+  display: flex;
+  position: fixed;
+  animation: zoomIn 0.5s ease-in-out;
+}
+
+.input {
+  border: none;
+  border-bottom: 1px solid #888;
+  width: 100%;
+  padding-bottom: 0.7em;
+  margin-bottom: 2em;
+}
+.popup__input {
+  border: none;
+  border-bottom: 1px solid #888;
+  width: 100%;
+  padding-bottom: 0.7em;
+  margin-bottom: 2em;
+}
+
+.profile__button-add:hover {
+  opacity: 0.6;
+  transition: 0.3s ease-in-out;
+}
+.button__type-like:hover {
+  opacity: 0.6;
+  transition: 0.3s ease-in-out;
+}
+.profile__button-edit:hover {
+  opacity: 0.6;
+  transition: 0.3s ease-in-out;
+}
+
+.button__type-close:hover {
+  opacity: 0.6;
+  transition: 0.3s ease-in-out;
+}
+@media screen and (max-width: 768px) {
+  .popup__content {
+    max-width: 282px;
+    height: 322px;
+  }
+  .button__type-save {
+    width: 238px;
+    height: 46px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .popup__content {
+    max-width: 282px;
+    height: 322px;
+  }
+  .button__type-save {
+    width: 238px;
+    height: 46px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+}
