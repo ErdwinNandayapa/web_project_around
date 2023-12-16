@@ -76,5 +76,40 @@
       <p class="footer__text">© 2020 Around The U.S.</p>
     </footer>
     <!---------- Popup ------------->
+    <div class="popup popup__edit">
+      <div class="popup__content">
+        <div class="pop__container">
+          <button class="button button__type-close"></button>
+          <span class="popup__title">Edit profile</span>
+          <form class="popup__form">
+            <fieldset class="form__set">
+              <input
+                type="text"
+                name="input input-name"
+                id="input-name"
+                class="popup__input input__name"
+                placeholder="Name"
+              />
+              <span class="form__error"></span>
+              <input
+                type="text"
+                name="input input-job"
+                id="input-job"
+                class="popup__input input__profesion"
+                placeholder="Profession"
+                required
+                minlength="2"
+                maxlength="40"
+              />
+              <span class="form__error"></span>
+            </fieldset>
+
+            <button class="button button__type-save">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="popup__overlay"></div>
+    <script src="./script.js"></script>
   </body>
 </html>
