@@ -1,0 +1,12 @@
+.button__type-close {
+  background: url(../../../../images/close_button.svg) no-repeat;
+  background-size: 100%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  box-sizing: border-box;
+  border: none;
+  position: absolute;
+  top: -28px;
+  right: -15px;
+}

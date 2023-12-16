@@ -1,0 +1,13 @@
+.popup__container {
+  width: 85%;
+  margin: 1.5em auto;
+}
+
+.popup__content {
+  max-width: 430px;
+  height: 330px;
+  background-color: #fff;
+  border-radius: 10px;
+  top: 0%;
+  position: relative;
+}
