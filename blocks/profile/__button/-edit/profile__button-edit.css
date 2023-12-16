@@ -1,0 +1,17 @@
+.profile__button-edit {
+  /* margin-top: 20px;
+    margin-bottom: 47px;
+    padding: 3px 6px; */
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  background: url(../../../../images/edit_button.svg) no-repeat 1px 50%;
+  border: 1px solid #fff;
+  color: white;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: 18px;
+}

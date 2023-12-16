@@ -9,9 +9,110 @@
     <link rel="stylesheet" href="./pages/normalize.css" />
     <link rel="stylesheet" href="./pages/style.css" />
     <link rel="shortcut icon" href="favicon.ico" />
-    <title>Document</title>
+    <title>Project around</title>
   </head>
-  <body>
-    <div class="page"></div>
+  <body class="body">
+    <header class="header">
+      <img class="header__logo" src="./images/logo.svg" alt="" />
+    </header>
+    <main class="container">
+      <section class="profile">
+        <img class="profile__avatar" src="./images/jacques.jpg" alt="" />
+        <div class="profile__edit">
+          <div class="profile__container">
+            <h1 class="profile__name">Jacques Cousteau</h1>
+            <button class="profile__button-edit"></button>
+          </div>
+          <p class="profile__profession">Explorer</p>
+        </div>
+        <button class="profile__button-add"></button>
+      </section>
+      <section class="cards">
+        <div class="card">
+          <img src="./images/valley.jpg" alt="valley" />
+          <div class="card__info">
+            <p class="card__text">Yosemite Valley</p>
+            <button class="button button__type-like"></button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="./images/louise.jpg" alt="louise" />
+          <div class="card__info">
+            <p class="card__text">Lake Louise</p>
+            <button class="button button__type-like"></button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="./images/mountains.jpg" alt="mountains" />
+          <div class="card__info">
+            <p class="card__text">Bald Mountains</p>
+            <button class="button button__type-like"></button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="./images/latemar.png" alt="latemar" />
+          <div class="card__info">
+            <p class="card__text">Latemar</p>
+            <button class="button button__type-like"></button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="./images/national.png" alt="national" />
+          <div class="card__info">
+            <p class="card__text">Vanoise Nationa...</p>
+            <button class="button button__type-like"></button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="./images/lago.jpg" alt="lago" />
+          <div class="card__info">
+            <p class="card__text">Lago di Braies</p>
+            <button class="button button__type-like"></button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__text">© 2020 Around The U.S.</p>
+    </footer>
+    <!---------- Popup ------------->
+    <div class="popup popup__edit">
+      <div class="popup__content">
+        <div class="pop__container">
+          <button class="button button__type-close"></button>
+          <span class="popup__title">Edit profile</span>
+          <form class="popup__form">
+            <fieldset class="form__set">
+              <input
+                type="text"
+                name="input input-name"
+                id="input-name"
+                required
+                minlength="1"
+                maxlength="60"
+                class="popup__input input__name"
+                placeholder="Name"
+              />
+              <span class="form__error"></span>
+              <input
+                type="text"
+                name="input input-job"
+                id="input-job"
+                class="popup__input input__profesion"
+                placeholder="Profession"
+                required
+                minlength="1"
+                maxlength="60"
+              />
+              <span class="form__error"></span>
+            </fieldset>
+
+            <button class="button button__type-save">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="popup__overlay"></div>
+    <script src="./script.js"></script>
   </body>
 </html>

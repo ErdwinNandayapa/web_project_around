@@ -1,0 +1,10 @@
+.button__type-like {
+  background: url(../../../../../images/button_like.svg) no-repeat;
+  width: 23px;
+  height: 23px;
+  align-items: center;
+  border: none;
+  border: 1px solid #fff;
+  color: white;
+  cursor: pointer;
+}
