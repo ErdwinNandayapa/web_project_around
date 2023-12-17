@@ -5,4 +5,9 @@
   font-style: normal;
   font-weight: 900;
   line-height: normal;
+  padding-left: 12px;
+  max-width: 220px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
