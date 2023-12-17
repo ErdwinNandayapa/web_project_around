@@ -10,3 +10,9 @@
   white-space: nowrap;
   max-width: 487px;
 }
+
+@media screen and (max-width: 768px) {
+  .profile__profession {
+    max-width: 282px;
+  }
+}
