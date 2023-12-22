@@ -27,50 +27,7 @@
         </div>
         <button class="profile__button-add"></button>
       </section>
-      <section class="cards">
-        <div class="card">
-          <img src="./images/valley.jpg" alt="valley" />
-          <div class="card__info">
-            <p class="card__text">Yosemite Valley</p>
-            <button class="button button__type-like"></button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="./images/louise.jpg" alt="louise" />
-          <div class="card__info">
-            <p class="card__text">Lake Louise</p>
-            <button class="button button__type-like"></button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="./images/mountains.jpg" alt="mountains" />
-          <div class="card__info">
-            <p class="card__text">Bald Mountains</p>
-            <button class="button button__type-like"></button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="./images/latemar.png" alt="latemar" />
-          <div class="card__info">
-            <p class="card__text">Latemar</p>
-            <button class="button button__type-like"></button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="./images/national.png" alt="national" />
-          <div class="card__info">
-            <p class="card__text">Vanoise National asdasdasdasdasdasdas</p>
-            <button class="button button__type-like"></button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="./images/lago.jpg" alt="lago" />
-          <div class="card__info">
-            <p class="card__text">Lago di Braies</p>
-            <button class="button button__type-like"></button>
-          </div>
-        </div>
-      </section>
+      <section class="cards"></section>
     </main>
     <footer class="footer">
       <p class="footer__text">© 2020 Around The U.S.</p>
@@ -113,6 +70,20 @@
       </div>
     </div>
     <div class="popup__overlay"></div>
+
+    <!-- template -->
+
+    <template id="template__card">
+      <div class="card">
+        <img class="images__card" />
+        <div class="card__info">
+          <p class="card__text"></p>
+          <button class="button button__type-like"></button>
+          <button class="button button__delete"></button>
+        </div>
+      </div>
+    </template>
+    <script src="./scrip2.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>

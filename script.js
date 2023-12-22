@@ -7,8 +7,13 @@ const popup = document.querySelector(".popup");;
 const buttonEdit = document.querySelector(".profile__button-edit");
 const fix = document.querySelector(".body"); //quitar scroll
 const buttoncerrar = document.querySelector(".button__type-close");
+// const buttonlike = document.querySelector(".button__type-like")
 
 
+
+//  buttonlike.addEventListener('click', function(){
+//    buttonlike.classList.toggle('button__like');
+//  });
 
 
 profileForm.addEventListener("submit", function(event){
