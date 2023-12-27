@@ -48,7 +48,7 @@
   transition: 0.3s ease-in-out;
 }
 
-.button__type-close:hover {
+.popup__button-typeclose:hover {
   opacity: 0.6;
   transition: 0.3s ease-in-out;
 }

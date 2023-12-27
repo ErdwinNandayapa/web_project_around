@@ -6,7 +6,7 @@ const profile__profession = document.querySelector(".profile__profession");
 const popup = document.querySelector(".popup");
 const buttonEdit = document.querySelector(".profile__button-edit");
 const fix = document.querySelector(".body"); //quitar scroll
-const buttoncerrar = document.querySelector(".button__type-close");
+const buttoncerrar = document.querySelector(".popup__button-typeclose");
 const buttonimage = document.querySelector(".images__card");
 
 //
