@@ -10,14 +10,14 @@ buttonadd.addEventListener("click", popupbuttonadd);
 function closepopup(event) {
   event.preventDefault();
 
-  const popupbuttonclose = document.querySelector(".popup__add");
+  const popupbuttonclose = document.querySelector("#popup__add");
   popupbuttonclose.classList.toggle("popup_open");
   fix.classList.toggle("fix");
 }
 
 function popupbuttonadd(event) {
   event.preventDefault();
-  const popupbuttonadd = document.querySelector(".popup__add");
+  const popupbuttonadd = document.querySelector("#popup__add");
   popupbuttonadd.classList.toggle("popup_open");
   fix.classList.toggle("fix");
   const popupFormAdd = document.querySelector(".popup__form-add");
@@ -32,7 +32,7 @@ function createCardinput(event) {
   event.preventDefault();
   const name = document.querySelector(".input__name-add");
   const link = document.querySelector(".input__link-add");
-  const popupbuttonadd = document.querySelector(".popup__add");
+  const popupbuttonadd = document.querySelector("#popup__add");
   const popupFormAdd = document.querySelector(".popup__form-add");
   const element = {
     name: name.value,
