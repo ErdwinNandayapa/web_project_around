@@ -10,7 +10,7 @@
 .popup_open {
   display: flex;
   position: fixed;
-  animation: zoomIn 0.5s ease-in-out;
+  /* animation: zoomIn 0.5s ease-in-out; */
 }
 
 .input {

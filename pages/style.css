@@ -31,6 +31,15 @@
 @import url(../blocks/popup/__open/popup__open.css);
 @import url(../blocks/popup/__container/popup__container.css);
 
+/* @keyframes zoomIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+} */
+
 .images__card {
   width: 282px;
   height: 282px;
@@ -50,6 +59,7 @@
   align-items: center;
   flex-direction: column;
   position: relative;
+  animation: zoomIn 1s ease-in-out;
 }
 .popup__image {
   width: 433px;
@@ -89,7 +99,6 @@
 .popup_opened {
   display: flex;
   position: fixed;
-  animation: zoomIn 0.5s ease-in-out;
 }
 
 @media screen and (max-width: 768px) {
