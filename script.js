@@ -1,6 +1,6 @@
 const profileForm = document.querySelector(".popup__form");
 const nombre = document.querySelector(".popup__input-name");
-const profesion = document.querySelector(".input__profesion");
+const profesion = document.querySelector(".popup__input-profesion");
 const profile__name = document.querySelector(".profile__name");
 const profile__profession = document.querySelector(".profile__profession");
 const popup = document.querySelector(".popup");
