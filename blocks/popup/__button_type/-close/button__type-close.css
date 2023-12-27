@@ -21,6 +21,7 @@
   position: absolute;
   top: -5%;
   right: -16px;
+  cursor: pointer;
 }
 
 .button__delete {
