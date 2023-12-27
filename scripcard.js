@@ -30,7 +30,7 @@ function popupbuttonadd(event) {
 
 function createCardinput(event) {
   event.preventDefault();
-  const name = document.querySelector(".popup__input-nameadd");
+  const name = document.querySelector(".popup__input-name-add");
   const link = document.querySelector(".input__link-add");
   const popupbuttonadd = document.querySelector("#popup__add");
   const popupFormAdd = document.querySelector(".popup__form-add");
