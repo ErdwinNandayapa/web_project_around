@@ -3,8 +3,17 @@
   font-weight: 900;
   line-height: 44px;
   text-align: left;
-  color: #000000;
+  color: black;
   margin-bottom: 24px;
   width: 85%;
   margin-left: 10px;
+}
+
+.popup__title_img {
+  color: #fff;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }

@@ -1,3 +1,11 @@
+@keyframes zoomIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 .popup__container {
   width: 85%;
   margin: 1.5em auto;
@@ -14,6 +22,7 @@
   border-radius: 10px;
   top: 0%;
   position: relative;
+  animation: zoomIn 1s ease-in-out;
 }
 @media screen and (max-width: 768px) {
   .popup__content {
