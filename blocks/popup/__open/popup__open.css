@@ -12,6 +12,10 @@
   position: fixed;
   /* animation: zoomIn 0.5s ease-in-out; */
 }
+.popup_opened {
+  display: flex;
+  position: fixed;
+}
 
 .input {
   border: none;

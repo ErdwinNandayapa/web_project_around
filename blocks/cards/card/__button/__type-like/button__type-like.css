@@ -9,3 +9,10 @@
   cursor: pointer;
   opacity: 0.5;
 }
+
+.button__like {
+  background: url(../../../../../images/like.svg);
+  opacity: 1;
+  border: none;
+  background-repeat: no-repeat;
+}
