@@ -87,3 +87,48 @@
     <script src="./script.js"></script>
   </body>
 </html>
+
+<!------------- PopUp Image ---------->
+<div class="popup popup_image">
+  <div class="popup__content-image">
+    <button class="button button button_close"></button>
+    <img src="" alt="" class="popup__element popup__image" />
+    <span class="popup__title popup__title_img"></span>
+  </div>
+</div>
+
+<!-- Popup form add image -->
+<div class="popup popup__add">
+  <div class="popup__content">
+    <div class="pop__container">
+      <button class="button button__type-close button__type-close-add"></button>
+      <span class="popup__title">New place</span>
+      <form class="popup__form popup__form-add">
+        <fieldset class="form__set">
+          <input
+            type="text"
+            name="input input-name"
+            id="input-name"
+            required
+            minlength="1"
+            maxlength="30"
+            class="popup__input input__name input__name-add"
+            placeholder="Title"
+          />
+          <span class="form__error"></span>
+          <input
+            type="url"
+            name="input input-job"
+            id="input-job"
+            class="popup__input input__profesion input__link-add"
+            placeholder="Image link"
+            required
+          />
+          <span class="form__error"></span>
+        </fieldset>
+
+        <button class="button button__type-save">Create</button>
+      </form>
+    </div>
+  </div>
+</div>

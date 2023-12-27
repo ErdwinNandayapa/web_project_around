@@ -24,8 +24,11 @@
   border: none;
   border-bottom: 1px solid #888;
   width: 100%;
-  padding-bottom: 0.7em;
+  padding-bottom: 5px;
   margin-bottom: 2em;
+}
+.popup__input:focus {
+  outline: none;
 }
 
 .profile__button-add:hover {
