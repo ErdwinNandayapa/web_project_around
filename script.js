@@ -29,6 +29,28 @@ buttonEdit.addEventListener("click", function () {
 });
 
 buttoncerrar.addEventListener("click", function () {
-  popup.classList.toggle("popup_open");
+  //popup.classList.toggle("popup-close");
+  //fix.classList.toggle("fix");
+  //popup.classList.toggle("popup_open");
+  const popupcontent = document.querySelector(".popup__content");
+  // Agrega la clase 'popup-close' para iniciar la animación de cierre
+  popupcontent.classList.add("popup-close");
+  // Después de un tiempo predeterminado (por ejemplo, 500 milisegundos), elimina la clase 'popup_open'
+  setTimeout(function () {
+    popup.classList.remove("popup_open");
+  }, 500);
+  setTimeout(function () {
+    popupcontent.classList.remove("popup-close");
+  }, 600);
+
+  // Elimina todos los demás popups
+  // const allPopups = document.querySelectorAll(".popup");
+  // allPopups.forEach(function (popupElement) {
+  //   if (popupElement !== popup) {
+  //     popupElement.remove();
+  //   }
+  // });
+
+  // Quita el scroll
   fix.classList.toggle("fix");
 });

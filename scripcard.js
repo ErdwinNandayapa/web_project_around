@@ -5,13 +5,21 @@ const buttonadd = document.querySelector(".profile__button-add");
 
 buttonadd.addEventListener("click", popupbuttonadd);
 
-// popupFormAdd.removeEventListener("submit", (event) => popupbuttonadd(event));
-
 function closepopup(event) {
   event.preventDefault();
-
   const popupbuttonclose = document.querySelector("#popup__add");
-  popupbuttonclose.classList.toggle("popup_open");
+
+  // popupbuttonclose.classList.toggle("popup_open");
+  // fix.classList.toggle("fix");
+  const popupcontent = document.querySelector(".popup__content-add");
+  popupcontent.classList.add("popup-close");
+  // Después de un tiempo predeterminado (por ejemplo, 500 milisegundos), elimina la clase 'popup_open'
+  setTimeout(function () {
+    popupbuttonclose.classList.toggle("popup_open");
+  }, 500);
+  setTimeout(function () {
+    popupcontent.classList.remove("popup-close");
+  }, 600);
   fix.classList.toggle("fix");
 }
 
@@ -125,8 +133,18 @@ function createPopupImage(evet) {
   fix.classList.toggle("fix");
 
   function cerrarPopuImage() {
-    popupimage.classList.toggle("popup_opened"); //inspeccionar el elemento
+    // popupimage.classList.toggle("popup_opened"); //inspeccionar el elemento
+    const popupcontent = document.querySelector(".popup__content-image");
+    popupcontent.classList.add("popup-close");
+    // Después de un tiempo predeterminado (por ejemplo, 500 milisegundos), elimina la clase 'popup_open'
+    setTimeout(function () {
+      popupimage.classList.toggle("popup_opened");
+    }, 500);
+    setTimeout(function () {
+      popupcontent.classList.remove("popup-close");
+    }, 600);
     fix.classList.toggle("fix");
+
     buttonclose.removeEventListener("click", cerrarPopuImage);
   }
   //
