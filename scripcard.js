@@ -21,7 +21,7 @@ function popupbuttonadd(event) {
   popupbuttonadd.classList.toggle("popup_open");
   fix.classList.toggle("fix");
   const popupFormAdd = document.querySelector(".popup__form-add");
-  const buttonclose = document.querySelector(".button__type-close-add");
+  const buttonclose = document.querySelector(".popup__button-typecloseadd");
 
   buttonclose.addEventListener("click", closepopup);
 
