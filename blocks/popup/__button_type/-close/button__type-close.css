@@ -35,3 +35,12 @@
   top: 18px;
   left: 247px;
 }
+
+@media screen and (max-width: 768px) {
+  .button_close {
+    top: -8%;
+    right: -19px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+}
