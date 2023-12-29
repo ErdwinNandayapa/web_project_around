@@ -9,8 +9,6 @@ function closepopup(event) {
   event.preventDefault();
   const popupbuttonclose = document.querySelector("#popup__add");
 
-  // popupbuttonclose.classList.toggle("popup_open");
-  // fix.classList.toggle("fix");
   const popupcontent = document.querySelector(".popup__content-add");
   popupcontent.classList.add("popup-close");
   // Después de un tiempo predeterminado (por ejemplo, 500 milisegundos), elimina la clase 'popup_open'

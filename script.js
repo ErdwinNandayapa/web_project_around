@@ -6,8 +6,7 @@ const profile__profession = document.querySelector(".profile__profession");
 const popup = document.querySelector(".popup");
 const buttonEdit = document.querySelector(".profile__button-edit");
 const fix = document.querySelector(".body"); //quitar scroll
-const buttoncerrar = document.querySelector(".popup__button-typeclose");
-const buttonimage = document.querySelector(".images__card");
+const buttonClose = document.querySelector(".popup__button-typeclose");
 
 //
 profileForm.addEventListener("submit", function (event) {
@@ -28,10 +27,7 @@ buttonEdit.addEventListener("click", function () {
   fix.classList.toggle("fix");
 });
 
-buttoncerrar.addEventListener("click", function () {
-  //popup.classList.toggle("popup-close");
-  //fix.classList.toggle("fix");
-  //popup.classList.toggle("popup_open");
+buttonClose.addEventListener("click", function () {
   const popupcontent = document.querySelector(".popup__content");
   // Agrega la clase 'popup-close' para iniciar la animación de cierre
   popupcontent.classList.add("popup-close");
@@ -43,14 +39,5 @@ buttoncerrar.addEventListener("click", function () {
     popupcontent.classList.remove("popup-close");
   }, 600);
 
-  // Elimina todos los demás popups
-  // const allPopups = document.querySelectorAll(".popup");
-  // allPopups.forEach(function (popupElement) {
-  //   if (popupElement !== popup) {
-  //     popupElement.remove();
-  //   }
-  // });
-
-  // Quita el scroll
   fix.classList.toggle("fix");
 });
