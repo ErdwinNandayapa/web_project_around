@@ -26,7 +26,7 @@ Around The U.S. es una página web que muestra el perfil de un explorador llamad
 
 - Figma: el diseño del proyecto se crea utilizando Figma para planificar y visualizar el diseño.
 
-- Validación HTML: el código HTML se valida según los estándares web mediante HTML Validator para garantizar el marcado y la accesibilidad adecuados. https://validator.w3.org/#validate_by_upload
+- Validación HTML: el código HTML se valida según los estándares web mediante HTML Validator para garantizar el marcado y la accesibilidad adecuados. (https://validator.w3.org/#validate_by_upload)
 
 ## 🔗 Links
 

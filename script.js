@@ -1,5 +1,5 @@
 const profileForm = document.querySelector(".popup__form");
-const nombre = document.querySelector(".popup__input-name");
+const nameprofession = document.querySelector(".popup__input-name");
 const profesion = document.querySelector(".popup__input-profesion");
 const profile__name = document.querySelector(".profile__name");
 const profile__profession = document.querySelector(".profile__profession");
@@ -11,7 +11,7 @@ const buttonClose = document.querySelector(".popup__button-typeclose");
 //
 profileForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  profile__name.textContent = nombre.value;
+  profile__name.textContent = nameprofession.value;
   profile__profession.textContent = profesion.value;
   //reset
   profileForm.reset();
