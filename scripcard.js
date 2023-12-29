@@ -1,37 +1,35 @@
 const $cards = document.querySelector(".cards");
 $template = document.querySelector("#template__card").content;
 $fragment = document.createDocumentFragment();
-const buttonadd = document.querySelector(".profile__button-add");
+const buttonAdd = document.querySelector(".profile__button-add");
 
-buttonadd.addEventListener("click", popupbuttonadd);
+buttonAdd.addEventListener("click", popupButtonAdd);
 
-function closepopup(event) {
+function closePopup(event) {
   event.preventDefault();
-  const popupbuttonclose = document.querySelector("#popup__add");
+  const popupButtonClose = document.querySelector("#popup__add");
 
-  // popupbuttonclose.classList.toggle("popup_open");
-  // fix.classList.toggle("fix");
-  const popupcontent = document.querySelector(".popup__content-add");
-  popupcontent.classList.add("popup-close");
+  const popupContent = document.querySelector(".popup__content-add");
+  popupContent.classList.add("popup-close");
   // Después de un tiempo predeterminado (por ejemplo, 500 milisegundos), elimina la clase 'popup_open'
   setTimeout(function () {
-    popupbuttonclose.classList.toggle("popup_open");
+    popupButtonClose.classList.toggle("popup_open");
   }, 500);
   setTimeout(function () {
-    popupcontent.classList.remove("popup-close");
+    popupContent.classList.remove("popup-close");
   }, 600);
   fix.classList.toggle("fix");
 }
 
-function popupbuttonadd(event) {
+function popupButtonAdd(event) {
   event.preventDefault();
-  const popupbuttonadd = document.querySelector("#popup__add");
-  popupbuttonadd.classList.toggle("popup_open");
+  const popupButtonAdd = document.querySelector("#popup__add");
+  popupButtonAdd.classList.toggle("popup_open");
   fix.classList.toggle("fix");
   const popupFormAdd = document.querySelector(".popup__form-add");
-  const buttonclose = document.querySelector(".popup__button-typecloseadd");
+  const buttonClose = document.querySelector(".popup__button-typecloseadd");
 
-  buttonclose.addEventListener("click", closepopup);
+  buttonClose.addEventListener("click", closePopup);
 
   popupFormAdd.addEventListener("submit", createCardinput);
 }
@@ -40,16 +38,16 @@ function createCardinput(event) {
   event.preventDefault();
   const name = document.querySelector(".popup__input-name-add");
   const link = document.querySelector(".popup__input-linkadd");
-  const popupbuttonadd = document.querySelector("#popup__add");
+  const popupButtonAdd = document.querySelector("#popup__add");
   const popupFormAdd = document.querySelector(".popup__form-add");
   const element = {
     name: name.value,
     link: link.value,
   };
-  const newcard = createCard(element);
-  $cards.prepend(newcard);
+  const newCard = createCard(element);
+  $cards.prepend(newCard);
 
-  popupbuttonadd.classList.toggle("popup_open");
+  popupButtonAdd.classList.toggle("popup_open");
 
   fix.classList.toggle("fix");
   popupFormAdd.reset();
@@ -117,36 +115,36 @@ cardsContent.forEach((element) => {
 $cards.appendChild($fragment);
 
 function createPopupImage(evet) {
-  const popupimage = document.querySelector(".popup_image");
-  const popupimagesrc = document.querySelector(".popup__element");
-  const popup__title = popupimagesrc.nextElementSibling;
-  const buttonclose = document.querySelector(".button_close");
+  const popupImage = document.querySelector(".popup_image");
+  const popupImageSrc = document.querySelector(".popup__element");
+  const popup__title = popupImageSrc.nextElementSibling;
+  const buttonClose = document.querySelector(".button_close");
 
   //quitar scroll
 
-  popupimagesrc.src = evet.target.src;
-  popupimagesrc.alt = evet.target.alt;
+  popupImageSrc.src = evet.target.src;
+  popupImageSrc.alt = evet.target.alt;
   popup__title.textContent = evet.target.alt;
 
-  popupimage.classList.toggle("popup_opened");
+  popupImage.classList.toggle("popup_opened");
 
   fix.classList.toggle("fix");
 
-  function cerrarPopuImage() {
-    // popupimage.classList.toggle("popup_opened"); //inspeccionar el elemento
-    const popupcontent = document.querySelector(".popup__content-image");
-    popupcontent.classList.add("popup-close");
+  function closePopuImage() {
+    // popupImage.classList.toggle("popup_opened"); //inspeccionar el elemento
+    const popupContent = document.querySelector(".popup__content-image");
+    popupContent.classList.add("popup-close");
     // Después de un tiempo predeterminado (por ejemplo, 500 milisegundos), elimina la clase 'popup_open'
     setTimeout(function () {
-      popupimage.classList.toggle("popup_opened");
+      popupImage.classList.toggle("popup_opened");
     }, 500);
     setTimeout(function () {
-      popupcontent.classList.remove("popup-close");
+      popupContent.classList.remove("popup-close");
     }, 600);
     fix.classList.toggle("fix");
 
-    buttonclose.removeEventListener("click", cerrarPopuImage);
+    buttonClose.removeEventListener("click", closePopuImage);
   }
   //
-  buttonclose.addEventListener("click", cerrarPopuImage);
+  buttonClose.addEventListener("click", closePopuImage);
 }
