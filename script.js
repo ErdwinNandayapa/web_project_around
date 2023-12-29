@@ -13,7 +13,6 @@ profileForm.addEventListener("submit", function (event) {
   event.preventDefault();
   profile__name.textContent = nameprofession.value;
   profile__profession.textContent = profesion.value;
-  //reset
   profileForm.reset();
 
   popup.classList.toggle("popup_open");
@@ -23,7 +22,6 @@ profileForm.addEventListener("submit", function (event) {
 buttonEdit.addEventListener("click", function () {
   //abrir popup
   popup.classList.toggle("popup_open");
-  //quita el scroll
   fix.classList.toggle("fix");
 });
 
