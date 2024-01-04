@@ -10,14 +10,18 @@ function closePopup(event) {
   const popupButtonClose = document.querySelector("#popup__add");
 
   const popupContent = document.querySelector(".popup__content-add");
-  popupContent.classList.add("popup-close");
-  // Después de un tiempo predeterminado (por ejemplo, 500 milisegundos), elimina la clase 'popup_open'
-  setTimeout(function () {
-    popupButtonClose.classList.toggle("popup_open");
-  }, 500);
-  setTimeout(function () {
-    popupContent.classList.remove("popup-close");
-  }, 600);
+  popupContent.classList.add("popup-closeTransition");
+
+  let element = document.querySelector(".popup-closeTransition");
+  element.addEventListener("animationend", (e) => {
+    if (e.animationName === "zoomOut") {
+      //     //  cerrar el evento o realizar cualquier acción que necesites.
+
+      popupContent.classList.remove("popup-closeTransition");
+      popupButtonClose.classList.remove("popup_open");
+    }
+  });
+
   fix.classList.toggle("fix");
 }
 
@@ -126,25 +130,27 @@ function createPopupImage(evet) {
   popupImageSrc.alt = evet.target.alt;
   popup__title.textContent = evet.target.alt;
 
-  popupImage.classList.toggle("popup_opened");
+  popupImage.classList.toggle("popup_open");
 
   fix.classList.toggle("fix");
 
-  function closePopuImage() {
-    // popupImage.classList.toggle("popup_opened"); //inspeccionar el elemento
-    const popupContent = document.querySelector(".popup__content-image");
-    popupContent.classList.add("popup-close");
-    // Después de un tiempo predeterminado (por ejemplo, 500 milisegundos), elimina la clase 'popup_open'
-    setTimeout(function () {
-      popupImage.classList.toggle("popup_opened");
-    }, 500);
-    setTimeout(function () {
-      popupContent.classList.remove("popup-close");
-    }, 600);
-    fix.classList.toggle("fix");
-
-    buttonClose.removeEventListener("click", closePopuImage);
-  }
   //
-  buttonClose.addEventListener("click", closePopuImage);
+  buttonClose.addEventListener("click", closeAnimationendImage);
+}
+
+function closeAnimationendImage() {
+  const popupContent = document.querySelector(".popup__content-image");
+  const popupImage = document.querySelector(".popup_image");
+  popupContent.classList.add("popup-closeTransition");
+  let element = document.querySelector(".popup-closeTransition");
+  element.addEventListener("animationend", (e) => {
+    if (e.animationName === "zoomOut") {
+      //     //  cerrar el evento o realizar cualquier acción que necesites.
+      // popupImage.classList.toggle("popup_open");
+      popupImage.classList.remove("popup_open");
+      popupContent.classList.remove("popup-closeTransition");
+    }
+  });
+  fix.classList.toggle("fix");
+  buttonClose.removeEventListener("click", closeAnimationendImage);
 }

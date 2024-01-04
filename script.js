@@ -1,18 +1,17 @@
 const profileForm = document.querySelector(".popup__form");
-const nameprofession = document.querySelector(".popup__input-name");
+const nameProfession = document.querySelector(".popup__input-name");
 const profesion = document.querySelector(".popup__input-profesion");
-const profile__name = document.querySelector(".profile__name");
-const profile__profession = document.querySelector(".profile__profession");
+const profileName = document.querySelector(".profile__name");
+const profileProfession = document.querySelector(".profile__profession");
 const popup = document.querySelector(".popup");
 const buttonEdit = document.querySelector(".profile__button-edit");
 const fix = document.querySelector(".body"); //quitar scroll
 const buttonClose = document.querySelector(".popup__button-typeclose");
 
-//
 profileForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  profile__name.textContent = nameprofession.value;
-  profile__profession.textContent = profesion.value;
+  profileName.textContent = nameProfession.value;
+  profileProfession.textContent = profesion.value;
   profileForm.reset();
 
   popup.classList.toggle("popup_open");
@@ -25,17 +24,20 @@ buttonEdit.addEventListener("click", function () {
   fix.classList.toggle("fix");
 });
 
-buttonClose.addEventListener("click", function () {
-  const popupcontent = document.querySelector(".popup__content");
+buttonClose.addEventListener("click", function (event) {
+  const popupContent = document.querySelector(".popup__content");
   // Agrega la clase 'popup-close' para iniciar la animación de cierre
-  popupcontent.classList.add("popup-close");
-  // Después de un tiempo predeterminado (por ejemplo, 500 milisegundos), elimina la clase 'popup_open'
-  setTimeout(function () {
-    popup.classList.remove("popup_open");
-  }, 500);
-  setTimeout(function () {
-    popupcontent.classList.remove("popup-close");
-  }, 600);
+  popupContent.classList.add("popup-closeTransition");
+
+  //remover transicion
+  let element = document.querySelector(".popup-closeTransition");
+  element.addEventListener("animationend", (e) => {
+    if (e.animationName === "zoomOut") {
+      //     //  cerrar el evento o realizar cualquier acción que necesites.
+      popup.classList.remove("popup_open");
+      popupContent.classList.remove("popup-closeTransition");
+    }
+  });
 
   fix.classList.toggle("fix");
 });
