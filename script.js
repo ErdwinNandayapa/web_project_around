@@ -10,6 +10,9 @@ const buttonClose = document.querySelector(".popup__button-typeclose");
 
 profileForm.addEventListener("submit", function (event) {
   event.preventDefault();
+
+  console.log(profileName.textContent);
+
   profileName.textContent = nameProfession.value;
   profileProfession.textContent = profesion.value;
   profileForm.reset();
@@ -19,9 +22,30 @@ profileForm.addEventListener("submit", function (event) {
 });
 
 buttonEdit.addEventListener("click", function () {
+  nameProfession.value = profileName.textContent;
+  profesion.value = profileProfession.textContent;
   //abrir popup
   popup.classList.toggle("popup_open");
   fix.classList.toggle("fix");
+});
+
+popup.addEventListener("click", function (event) {
+  if (event.target.classList.value === "popup popup_open") {
+    const popupContent = document.querySelector(".popup__content");
+    // Agrega la clase 'popup-close' para iniciar la animación de cierre
+    popupContent.classList.add("popup-closeTransition");
+
+    //remover transicion
+    let element = document.querySelector(".popup-closeTransition");
+    element.addEventListener("animationend", (e) => {
+      if (e.animationName === "zoomOut") {
+        //     //  cerrar el evento o realizar cualquier acción que necesites.
+        popup.classList.remove("popup_open");
+        popupContent.classList.remove("popup-closeTransition");
+      }
+    });
+    fix.classList.toggle("fix");
+  }
 });
 
 buttonClose.addEventListener("click", function (event) {

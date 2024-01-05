@@ -3,16 +3,39 @@ $template = document.querySelector("#template__card").content;
 $fragment = document.createDocumentFragment();
 const buttonAdd = document.querySelector(".profile__button-add");
 
+// console.log(popup);
+
 buttonAdd.addEventListener("click", popupButtonAdd);
+
+function closePopupAdd(event) {
+  event.preventDefault();
+  if (event.target.classList.value === "popup popup_open") {
+    const popupButtonClose = document.querySelector("#popup__add");
+    const popupContent = document.querySelector(".popup__content-add");
+    popupContent.classList.add("popup-closeTransition");
+    let element = document.querySelector(".popup-closeTransition");
+
+    element.addEventListener("animationend", (e) => {
+      if (e.animationName === "zoomOut") {
+        //     //  cerrar el evento o realizar cualquier acción que necesites.
+
+        popupContent.classList.remove("popup-closeTransition");
+        popupButtonClose.classList.remove("popup_open");
+      }
+    });
+
+    fix.classList.toggle("fix");
+  }
+}
 
 function closePopup(event) {
   event.preventDefault();
-  const popupButtonClose = document.querySelector("#popup__add");
 
+  const popupButtonClose = document.querySelector("#popup__add");
   const popupContent = document.querySelector(".popup__content-add");
   popupContent.classList.add("popup-closeTransition");
-
   let element = document.querySelector(".popup-closeTransition");
+
   element.addEventListener("animationend", (e) => {
     if (e.animationName === "zoomOut") {
       //     //  cerrar el evento o realizar cualquier acción que necesites.
@@ -34,6 +57,7 @@ function popupButtonAdd(event) {
   const buttonClose = document.querySelector(".popup__button-typecloseadd");
 
   buttonClose.addEventListener("click", closePopup);
+  popupButtonAdd.addEventListener("click", closePopupAdd);
 
   popupFormAdd.addEventListener("submit", createCardinput);
 }
@@ -136,6 +160,7 @@ function createPopupImage(evet) {
 
   //
   buttonClose.addEventListener("click", closeAnimationendImage);
+  popupImage.addEventListener("click", closeAnimationendPopuOpen);
 }
 
 function closeAnimationendImage() {
@@ -153,4 +178,23 @@ function closeAnimationendImage() {
   });
   fix.classList.toggle("fix");
   buttonClose.removeEventListener("click", closeAnimationendImage);
+}
+
+function closeAnimationendPopuOpen(event) {
+  if (event.target.classList.value === "popup popup_image popup_open") {
+    const popupContent = document.querySelector(".popup__content-image");
+    const popupImage = document.querySelector(".popup_image");
+    popupContent.classList.add("popup-closeTransition");
+    let element = document.querySelector(".popup-closeTransition");
+    element.addEventListener("animationend", (e) => {
+      if (e.animationName === "zoomOut") {
+        //     //  cerrar el evento o realizar cualquier acción que necesites.
+        // popupImage.classList.toggle("popup_open");
+        popupImage.classList.remove("popup_open");
+        popupContent.classList.remove("popup-closeTransition");
+      }
+    });
+    fix.classList.toggle("fix");
+    buttonClose.removeEventListener("click", closeAnimationendImage);
+  }
 }

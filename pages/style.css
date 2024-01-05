@@ -31,3 +31,49 @@
 @import url(../blocks/popup/__open/popup__open.css);
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__container/popup__container.css);
+
+.popup__input_type_error {
+  border-bottom: 1px solid red;
+}
+.popup__input_type {
+  position: absolute;
+  top: 147px;
+  left: 15px;
+  color: #f00;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  max-width: 393px;
+}
+.popup__error-profesion {
+  position: absolute;
+  top: 205px;
+  left: 15px;
+  color: #f00;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  max-width: 393px;
+}
+
+.popup__button_disabled {
+  background-color: #b6bcbf;
+  color: #fff;
+  border: none;
+  border-radius: 2px;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 10px 20px;
+  margin: 0 auto;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  cursor: not-allowed;
+  pointer-events: none;
+}
