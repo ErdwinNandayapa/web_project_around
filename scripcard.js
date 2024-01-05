@@ -143,13 +143,13 @@ function closeAnimationendPopuOpen(event) {
     event.key === "Escape" ||
     event.target.classList.contains("button_close")
   ) {
-    console.log(event.key);
     const popupContent = document.querySelector(".popup__content-image");
     const popupImage = document.querySelector(".popup_image");
     popupContent.classList.add("popup-closeTransition");
     let element = document.querySelector(".popup-closeTransition");
     element.addEventListener("animationend", (e) => {
       if (e.animationName === "zoomOut") {
+        //     //  cerrar el evento o realizar cualquier acción que necesites.
         popupImage.classList.remove("popup_open");
         popupContent.classList.remove("popup-closeTransition");
       }
