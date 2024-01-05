@@ -8,29 +8,26 @@ const buttonEdit = document.querySelector(".profile__button-edit");
 const fix = document.querySelector(".body"); //quitar scroll
 const buttonClose = document.querySelector(".popup__button-typeclose");
 
-profileForm.addEventListener("submit", function (event) {
-  event.preventDefault();
+buttonEdit.addEventListener("click", openProfile);
+profileForm.addEventListener("submit", addProfilenameText);
+popup.addEventListener("click", closeProfiles);
+document.addEventListener("keyup", closeProfiles);
+buttonClose.addEventListener("click", closeProfiles);
 
-  console.log(profileName.textContent);
-
-  profileName.textContent = nameProfession.value;
-  profileProfession.textContent = profesion.value;
-  profileForm.reset();
-
-  popup.classList.toggle("popup_open");
-  fix.classList.toggle("fix");
-});
-
-buttonEdit.addEventListener("click", function () {
+function openProfile() {
   nameProfession.value = profileName.textContent;
   profesion.value = profileProfession.textContent;
   //abrir popup
   popup.classList.toggle("popup_open");
   fix.classList.toggle("fix");
-});
+}
 
-popup.addEventListener("click", function (event) {
-  if (event.target.classList.value === "popup popup_open") {
+function closeProfiles(event) {
+  if (
+    event.target.classList.contains("popup") ||
+    event.key === "Escape" ||
+    event.target.classList.contains("popup__button-typeclose")
+  ) {
     const popupContent = document.querySelector(".popup__content");
     // Agrega la clase 'popup-close' para iniciar la animación de cierre
     popupContent.classList.add("popup-closeTransition");
@@ -46,22 +43,14 @@ popup.addEventListener("click", function (event) {
     });
     fix.classList.toggle("fix");
   }
-});
+}
 
-buttonClose.addEventListener("click", function (event) {
-  const popupContent = document.querySelector(".popup__content");
-  // Agrega la clase 'popup-close' para iniciar la animación de cierre
-  popupContent.classList.add("popup-closeTransition");
+function addProfilenameText(event) {
+  event.preventDefault();
+  profileName.textContent = nameProfession.value;
+  profileProfession.textContent = profesion.value;
+  profileForm.reset();
 
-  //remover transicion
-  let element = document.querySelector(".popup-closeTransition");
-  element.addEventListener("animationend", (e) => {
-    if (e.animationName === "zoomOut") {
-      //     //  cerrar el evento o realizar cualquier acción que necesites.
-      popup.classList.remove("popup_open");
-      popupContent.classList.remove("popup-closeTransition");
-    }
-  });
-
+  popup.classList.toggle("popup_open");
   fix.classList.toggle("fix");
-});
+}
