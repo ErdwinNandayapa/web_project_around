@@ -24,7 +24,7 @@ function closePopupAdd(event) {
       }
     });
 
-    fix.classList.toggle("fix");
+    fix.classList.remove("fix");
   }
 }
 
@@ -154,7 +154,7 @@ function closeAnimationendPopuOpen(event) {
         popupContent.classList.remove("popup-closeTransition");
       }
     });
-    fix.classList.toggle("fix");
+    fix.classList.remove("fix");
     buttonClose.removeEventListener("click", closeAnimationendPopuOpen);
     document.removeEventListener("keyup", closeAnimationendPopuOpen);
   }

@@ -41,7 +41,7 @@ function closeProfiles(event) {
         popupContent.classList.remove("popup-closeTransition");
       }
     });
-    fix.classList.toggle("fix");
+    fix.classList.remove("fix");
   }
 }
 
