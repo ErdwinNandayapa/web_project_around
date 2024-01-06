@@ -44,11 +44,12 @@
                 name="input input-name"
                 id="input-name"
                 required
-                minlength="1"
-                maxlength="60"
+                minlength="2"
+                maxlength="40"
                 class="popup__input popup__input-name"
                 placeholder="Name"
               />
+              <p class="popup__input_type" id="input-name-error"></p>
               <input
                 type="text"
                 name="input input-job"
@@ -56,15 +57,57 @@
                 class="popup__input popup__input-profesion"
                 placeholder="Profession"
                 required
-                minlength="1"
-                maxlength="60"
+                minlength="2"
+                maxlength="200"
               />
+              <p class="popup__error-profesion" id="input-job-error"></p>
             </fieldset>
-            <button class="button popup__button-typesave">Save</button>
+            <button class="button popup__button-typesave popup__button">
+              Save
+            </button>
           </form>
         </div>
       </div>
     </div>
+    <!-- Popup form add image -->
+<div class="popup" id="popup__add">
+  <div class="popup__content popup__content-add">
+    <div class="popup__container">
+      <button
+        class="button popup__button-typeclose popup__button-typecloseadd"
+      ></button>
+      <span class="popup__title">New place</span>
+      <form class="popup__form popup__form-add" >
+        <fieldset class="popup__fieldset">
+          <input
+            type="text"
+            name="input input-nameadd"
+            id="input-nameimg"
+            required
+            minlength="2"
+            maxlength="30"
+            class="popup__input popup__input-name popup__input-name-add"
+            placeholder="Title"
+          />
+          <p class="popup__input_type" id="input-nameimg-error"></p>
+          <input
+            type="url"
+            name="input input-job"
+            id="input-jobimg"
+            class="popup__input popup__input-profesion popup__input-linkadd"
+            placeholder="Image link"
+            required
+          />
+          <p class="popup__error-profesion" id="input-jobimg-error"></p>
+        </fieldset>
+        <button class="button popup__button popup__button-typesave">
+          Create
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
 
     <!-- template -->
 
@@ -78,8 +121,9 @@
         </div>
       </div>
     </template>
-    <script src="./scripcard.js"></script>
+    <script  src="./scripcard.js"></script>
     <script src="./script.js"></script>
+    <script src="./validate.js"></script>
   </body>
 </html>
 
@@ -92,37 +136,3 @@
   </div>
 </div>
 
-<!-- Popup form add image -->
-<div class="popup" id="popup__add">
-  <div class="popup__content popup__content-add">
-    <div class="popup__container">
-      <button
-        class="button popup__button-typeclose popup__button-typecloseadd"
-      ></button>
-      <span class="popup__title">New place</span>
-      <form class="popup__form popup__form-add">
-        <fieldset class="popup__fieldset">
-          <input
-            type="text"
-            name="input input-name"
-            id="input-nameimg"
-            required
-            minlength="1"
-            maxlength="30"
-            class="popup__input popup__input-name popup__input-name-add"
-            placeholder="Title"
-          />
-          <input
-            type="url"
-            name="input input-job"
-            id="input-jobimg"
-            class="popup__input popup__input-profesion popup__input-linkadd"
-            placeholder="Image link"
-            required
-          />
-        </fieldset>
-        <button class="button popup__button-typesave">Create</button>
-      </form>
-    </div>
-  </div>
-</div>

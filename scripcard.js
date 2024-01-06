@@ -5,24 +5,27 @@ const buttonAdd = document.querySelector(".profile__button-add");
 
 buttonAdd.addEventListener("click", popupButtonAdd);
 
-function closePopup(event) {
+function closePopupAdd(event) {
   event.preventDefault();
-  const popupButtonClose = document.querySelector("#popup__add");
+  if (
+    event.target.classList.contains("popup") ||
+    event.key === "Escape" ||
+    event.target.classList.contains("popup__button-typecloseadd")
+  ) {
+    const popupButtonClose = document.querySelector("#popup__add");
+    const popupContent = document.querySelector(".popup__content-add");
+    popupContent.classList.add("popup-closeTransition");
+    let element = document.querySelector(".popup-closeTransition");
 
-  const popupContent = document.querySelector(".popup__content-add");
-  popupContent.classList.add("popup-closeTransition");
+    element.addEventListener("animationend", (e) => {
+      if (e.animationName === "zoomOut") {
+        popupContent.classList.remove("popup-closeTransition");
+        popupButtonClose.classList.remove("popup_open");
+      }
+    });
 
-  let element = document.querySelector(".popup-closeTransition");
-  element.addEventListener("animationend", (e) => {
-    if (e.animationName === "zoomOut") {
-      //     //  cerrar el evento o realizar cualquier acción que necesites.
-
-      popupContent.classList.remove("popup-closeTransition");
-      popupButtonClose.classList.remove("popup_open");
-    }
-  });
-
-  fix.classList.toggle("fix");
+    fix.classList.toggle("fix");
+  }
 }
 
 function popupButtonAdd(event) {
@@ -33,7 +36,9 @@ function popupButtonAdd(event) {
   const popupFormAdd = document.querySelector(".popup__form-add");
   const buttonClose = document.querySelector(".popup__button-typecloseadd");
 
-  buttonClose.addEventListener("click", closePopup);
+  buttonClose.addEventListener("click", closePopupAdd);
+  popupButtonAdd.addEventListener("click", closePopupAdd);
+  document.addEventListener("keyup", closePopupAdd);
 
   popupFormAdd.addEventListener("submit", createCardinput);
 }
@@ -52,7 +57,6 @@ function createCardinput(event) {
   $cards.prepend(newCard);
 
   popupButtonAdd.classList.toggle("popup_open");
-
   fix.classList.toggle("fix");
   popupFormAdd.reset();
   popupFormAdd.removeEventListener("submit", (event) => createCardinput(event));
@@ -88,11 +92,9 @@ cardsContent = [
 function createCard(element) {
   $card = $template.querySelector(".card");
   $clone = document.importNode($card, true);
-
   $clone.querySelector("img").setAttribute("src", element.link);
   $clone.querySelector("img").setAttribute("alt", element.name);
   $clone.querySelector(".card__text").textContent = element.name;
-  //  let $clone = document.importNode($template, true);
   $fragment.appendChild($clone);
 
   $clone
@@ -114,8 +116,7 @@ function createCard(element) {
 cardsContent.forEach((element) => {
   createCard(element);
 });
-//   // console.log(buttonLike);
-//
+
 $cards.appendChild($fragment);
 
 function createPopupImage(evet) {
@@ -124,33 +125,37 @@ function createPopupImage(evet) {
   const popup__title = popupImageSrc.nextElementSibling;
   const buttonClose = document.querySelector(".button_close");
 
-  //quitar scroll
-
   popupImageSrc.src = evet.target.src;
   popupImageSrc.alt = evet.target.alt;
   popup__title.textContent = evet.target.alt;
 
   popupImage.classList.toggle("popup_open");
-
   fix.classList.toggle("fix");
 
-  //
-  buttonClose.addEventListener("click", closeAnimationendImage);
+  buttonClose.addEventListener("click", closeAnimationendPopuOpen);
+  popupImage.addEventListener("click", closeAnimationendPopuOpen);
+  document.addEventListener("keydown", closeAnimationendPopuOpen);
 }
 
-function closeAnimationendImage() {
-  const popupContent = document.querySelector(".popup__content-image");
-  const popupImage = document.querySelector(".popup_image");
-  popupContent.classList.add("popup-closeTransition");
-  let element = document.querySelector(".popup-closeTransition");
-  element.addEventListener("animationend", (e) => {
-    if (e.animationName === "zoomOut") {
-      //     //  cerrar el evento o realizar cualquier acción que necesites.
-      // popupImage.classList.toggle("popup_open");
-      popupImage.classList.remove("popup_open");
-      popupContent.classList.remove("popup-closeTransition");
-    }
-  });
-  fix.classList.toggle("fix");
-  buttonClose.removeEventListener("click", closeAnimationendImage);
+function closeAnimationendPopuOpen(event) {
+  if (
+    event.target.classList.contains("popup") ||
+    event.key === "Escape" ||
+    event.target.classList.contains("button_close")
+  ) {
+    const popupContent = document.querySelector(".popup__content-image");
+    const popupImage = document.querySelector(".popup_image");
+    popupContent.classList.add("popup-closeTransition");
+    let element = document.querySelector(".popup-closeTransition");
+    element.addEventListener("animationend", (e) => {
+      if (e.animationName === "zoomOut") {
+        //     //  cerrar el evento o realizar cualquier acción que necesites.
+        popupImage.classList.remove("popup_open");
+        popupContent.classList.remove("popup-closeTransition");
+      }
+    });
+    fix.classList.toggle("fix");
+    buttonClose.removeEventListener("click", closeAnimationendPopuOpen);
+    document.removeEventListener("keyup", closeAnimationendPopuOpen);
+  }
 }
