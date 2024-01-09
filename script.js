@@ -1,3 +1,4 @@
+import "./validate.js";
 const profileForm = document.querySelector(".popup__form");
 const nameProfession = document.querySelector(".popup__input-name");
 const profesion = document.querySelector(".popup__input-profesion");
@@ -5,7 +6,7 @@ const profileName = document.querySelector(".profile__name");
 const profileProfession = document.querySelector(".profile__profession");
 const popup = document.querySelector(".popup");
 const buttonEdit = document.querySelector(".profile__button-edit");
-const fix = document.querySelector(".body"); //quitar scroll
+export const fix = document.querySelector(".body"); //quitar scroll
 const buttonClose = document.querySelector(".popup__button-typeclose");
 
 buttonEdit.addEventListener("click", openProfile);

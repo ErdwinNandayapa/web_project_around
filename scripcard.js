@@ -1,6 +1,8 @@
+import "./validate.js";
+import { fix } from "./script.js";
 const $cards = document.querySelector(".cards");
-$template = document.querySelector("#template__card").content;
-$fragment = document.createDocumentFragment();
+const $template = document.querySelector("#template__card").content;
+const $fragment = document.createDocumentFragment();
 const buttonAdd = document.querySelector(".profile__button-add");
 
 buttonAdd.addEventListener("click", popupButtonAdd);
@@ -62,7 +64,7 @@ function createCardinput(event) {
   popupFormAdd.removeEventListener("submit", (event) => createCardinput(event));
 }
 
-cardsContent = [
+const cardsContent = [
   {
     name: "Valle de Yosemite",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
@@ -90,8 +92,8 @@ cardsContent = [
 ];
 
 function createCard(element) {
-  $card = $template.querySelector(".card");
-  $clone = document.importNode($card, true);
+  const $card = $template.querySelector(".card");
+  const $clone = document.importNode($card, true);
   $clone.querySelector("img").setAttribute("src", element.link);
   $clone.querySelector("img").setAttribute("alt", element.name);
   $clone.querySelector(".card__text").textContent = element.name;
