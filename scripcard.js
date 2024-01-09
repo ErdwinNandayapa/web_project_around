@@ -32,6 +32,7 @@ function closePopupAdd(event) {
 
 function popupButtonAdd(event) {
   event.preventDefault();
+
   const popupButtonAdd = document.querySelector("#popup__add");
   popupButtonAdd.classList.toggle("popup_open");
   fix.classList.toggle("fix");
@@ -40,8 +41,7 @@ function popupButtonAdd(event) {
 
   buttonClose.addEventListener("click", closePopupAdd);
   popupButtonAdd.addEventListener("click", closePopupAdd);
-  document.addEventListener("keyup", closePopupAdd);
-
+  document.addEventListener("keydown", closePopupAdd);
   popupFormAdd.addEventListener("submit", createCardinput);
 }
 
@@ -157,6 +157,7 @@ function closeAnimationendPopuOpen(event) {
       }
     });
     fix.classList.remove("fix");
+    const buttonClose = document.querySelector(".button_close");
     buttonClose.removeEventListener("click", closeAnimationendPopuOpen);
     document.removeEventListener("keyup", closeAnimationendPopuOpen);
   }

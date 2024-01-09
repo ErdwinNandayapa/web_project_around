@@ -43,6 +43,9 @@ function closeProfiles(event) {
       }
     });
     fix.classList.remove("fix");
+
+    removeEventListener("keyup", closeProfiles);
+    removeEventListener("click", closeProfiles);
   }
 }
 

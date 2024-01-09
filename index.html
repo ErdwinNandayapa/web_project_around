@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,7 +12,7 @@
   </head>
   <body class="body">
     <header class="header">
-      <img class="header__logo" src="./images/logo.svg" alt="" />
+      <img class="header__logo" src="./images/logo.svg" alt="Around" />
     </header>
     <main class="container">
       <section class="profile">
@@ -29,9 +29,9 @@
       <section class="cards"></section>
     </main>
     <footer class="footer">
-      <p class="footer__text">© 2020 Around The U.S.</p>
+      <p class="footer__text">&copy; 2020 Around The U.S.</p>
     </footer>
-    <!---------- Popup ------------->
+    <!-- -------- Popup ----------- -->
     <div class="popup">
       <div class="popup__content popup__edit">
         <div class="popup__container">
@@ -120,16 +120,15 @@
         </div>
       </div>
     </template>
+    <!------------- PopUp Image ---------->
+    <div class="popup popup_image">
+      <div class="popup__content-image">
+        <button class="button button button_close"></button>
+        <img src="." alt="" class="popup__element popup__image" />
+        <span class="popup__title popup__title_img"></span>
+      </div>
+    </div>
     <script type="module" src="./scripcard.js"></script>
     <script type="module" src="./script.js"></script>
   </body>
 </html>
-
-<!------------- PopUp Image ---------->
-<div class="popup popup_image">
-  <div class="popup__content-image">
-    <button class="button button button_close"></button>
-    <img src="." alt="" class="popup__element popup__image" />
-    <span class="popup__title popup__title_img"></span>
-  </div>
-</div>
