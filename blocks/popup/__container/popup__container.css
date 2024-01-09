@@ -59,6 +59,19 @@
   line-height: normal;
   max-width: 393px;
 }
+.popup__input-span {
+  position: absolute;
+  top: 147px;
+  left: 15px;
+  color: #f00;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  max-width: 393px;
+}
+
 .popup__error-profesion {
   position: absolute;
   top: 205px;
