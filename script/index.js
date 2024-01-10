@@ -17,7 +17,7 @@ function closePopupAdd(event) {
     const popupButtonClose = document.querySelector("#popup__add");
     const popupContent = document.querySelector(".popup__content-add");
     popupContent.classList.add("popup-closeTransition");
-    let element = document.querySelector(".popup-closeTransition");
+    const element = document.querySelector(".popup-closeTransition");
 
     element.addEventListener("animationend", (e) => {
       if (e.animationName === "zoomOut") {
