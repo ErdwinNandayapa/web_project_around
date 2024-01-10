@@ -4,7 +4,6 @@ const cards = document.querySelector(".cards");
 const template = document.querySelector("#template__card").content;
 const fragment = document.createDocumentFragment();
 const buttonAdd = document.querySelector(".profile__button-add");
-const fix = document.querySelector(".body");
 
 buttonAdd.addEventListener("click", popupButtonAdd);
 
@@ -26,8 +25,7 @@ function closePopupAdd(event) {
         document.removeEventListener("keyup", closePopupAdd);
       }
     });
-
-    fix.classList.remove("fix");
+    document.body.style.overflow = "auto";
   }
 }
 
@@ -35,7 +33,8 @@ function popupButtonAdd(event) {
   event.preventDefault();
   const popupButtonAddId = document.querySelector("#popup__add");
   popupButtonAddId.classList.toggle("popup_open");
-  fix.classList.toggle("fix");
+
+  document.body.style.overflow = "hidden";
   const popupFormAdd = document.querySelector(".popup__form-add");
 
   const buttonClose = document.querySelector(".popup__button-typecloseadd");
@@ -59,7 +58,9 @@ function createCardInput(event) {
   cards.prepend(newCard);
 
   popupButtonAddId.classList.toggle("popup_open");
-  fix.classList.toggle("fix");
+  // fix.classList.toggle("fix");
+  document.body.style.overflow = "auto";
+
   popupFormAdd.reset();
   popupFormAdd.removeEventListener("submit", (event) => createCardInput(event));
 }
@@ -132,7 +133,8 @@ function createPopupImage(evet) {
   popup__title.textContent = evet.target.alt;
 
   popupImage.classList.toggle("popup_open");
-  fix.classList.toggle("fix");
+
+  document.body.style.overflow = "hidden";
 
   buttonClose.addEventListener("click", closeAnimationendPopuOpen);
   popupImage.addEventListener("click", closeAnimationendPopuOpen);
@@ -156,8 +158,8 @@ function closeAnimationendPopuOpen(event) {
         popupContent.classList.remove("popup-closeTransition");
       }
     });
-    fix.classList.remove("fix");
 
+    document.body.style.overflow = "auto";
     document.removeEventListener("keydown", closeAnimationendPopuOpen);
   }
 }
@@ -184,7 +186,7 @@ function openProfile() {
   profesion.value = profileProfession.textContent;
   //abrir popup
   popup.classList.toggle("popup_open");
-  fix.classList.toggle("fix");
+  document.body.style.overflow = "hidden";
   document.addEventListener("keyup", closeProfiles);
 }
 function animationZoomOut(e) {
@@ -211,7 +213,7 @@ function closeProfiles(event) {
     //remover transicion
     const element = document.querySelector(".popup-closeTransition");
     element.addEventListener("animationend", animationZoomOut);
-    fix.classList.remove("fix");
+    document.body.style.overflow = "auto";
   }
 }
 
@@ -222,5 +224,5 @@ function addProfilenameText(event) {
   profileForm.reset();
 
   popup.classList.toggle("popup_open");
-  fix.classList.toggle("fix");
+  document.body.style.overflow = "auto";
 }

@@ -10,11 +10,13 @@
 .popup_open {
   display: flex;
   position: fixed;
-  overflow-y: hidden;
+  overflow: hidden;
 }
+
 .popup_opened {
   display: flex;
   position: fixed;
+  overflow: hidden;
 }
 
 .input {
