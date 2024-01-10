@@ -12,7 +12,7 @@ const buttonClose = document.querySelector(".popup__button-typeclose");
 buttonEdit.addEventListener("click", openProfile);
 profileForm.addEventListener("submit", addProfilenameText);
 popup.addEventListener("click", closeProfiles);
-document.addEventListener("keyup", closeProfiles);
+
 buttonClose.addEventListener("click", closeProfiles);
 
 function openProfile() {
@@ -21,6 +21,18 @@ function openProfile() {
   //abrir popup
   popup.classList.toggle("popup_open");
   fix.classList.toggle("fix");
+  document.addEventListener("keyup", closeProfiles);
+}
+function animationZoomOut(e) {
+  if (e.animationName === "zoomOut") {
+    const popupContent = document.querySelector(".popup__content");
+    //     //  cerrar el evento o realizar cualquier acción que necesites.
+    popup.classList.remove("popup_open");
+    const element = document.querySelector(".popup-closeTransition");
+    element.removeEventListener("animationend", animationZoomOut);
+    popupContent.classList.remove("popup-closeTransition");
+    document.removeEventListener("keyup", closeProfiles);
+  }
 }
 
 function closeProfiles(event) {
@@ -32,20 +44,10 @@ function closeProfiles(event) {
     const popupContent = document.querySelector(".popup__content");
     // Agrega la clase 'popup-close' para iniciar la animación de cierre
     popupContent.classList.add("popup-closeTransition");
-
     //remover transicion
-    let element = document.querySelector(".popup-closeTransition");
-    element.addEventListener("animationend", (e) => {
-      if (e.animationName === "zoomOut") {
-        //     //  cerrar el evento o realizar cualquier acción que necesites.
-        popup.classList.remove("popup_open");
-        popupContent.classList.remove("popup-closeTransition");
-      }
-    });
+    const element = document.querySelector(".popup-closeTransition");
+    element.addEventListener("animationend", animationZoomOut);
     fix.classList.remove("fix");
-
-    removeEventListener("keyup", closeProfiles);
-    removeEventListener("click", closeProfiles);
   }
 }
 

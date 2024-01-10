@@ -1,5 +1,6 @@
 import "./validate.js";
 import { fix } from "./script.js";
+
 const $cards = document.querySelector(".cards");
 const $template = document.querySelector("#template__card").content;
 const $fragment = document.createDocumentFragment();
@@ -23,6 +24,7 @@ function closePopupAdd(event) {
       if (e.animationName === "zoomOut") {
         popupContent.classList.remove("popup-closeTransition");
         popupButtonClose.classList.remove("popup_open");
+        document.removeEventListener("keyup", closePopupAdd);
       }
     });
 
@@ -32,7 +34,6 @@ function closePopupAdd(event) {
 
 function popupButtonAdd(event) {
   event.preventDefault();
-
   const popupButtonAdd = document.querySelector("#popup__add");
   popupButtonAdd.classList.toggle("popup_open");
   fix.classList.toggle("fix");
@@ -41,7 +42,8 @@ function popupButtonAdd(event) {
 
   buttonClose.addEventListener("click", closePopupAdd);
   popupButtonAdd.addEventListener("click", closePopupAdd);
-  document.addEventListener("keydown", closePopupAdd);
+  document.addEventListener("keyup", closePopupAdd);
+
   popupFormAdd.addEventListener("submit", createCardinput);
 }
 
@@ -157,8 +159,7 @@ function closeAnimationendPopuOpen(event) {
       }
     });
     fix.classList.remove("fix");
-    const buttonClose = document.querySelector(".button_close");
-    buttonClose.removeEventListener("click", closeAnimationendPopuOpen);
-    document.removeEventListener("keyup", closeAnimationendPopuOpen);
+
+    document.removeEventListener("keydown", closeAnimationendPopuOpen);
   }
 }
