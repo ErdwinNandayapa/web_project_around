@@ -38,13 +38,12 @@ function popupButtonAdd(event) {
   popupButtonAdd.classList.toggle("popup_open");
   fix.classList.toggle("fix");
   const popupFormAdd = document.querySelector(".popup__form-add");
-  const buttonClose = document.querySelector(".popup__button-typecloseadd");
 
+  const buttonClose = document.querySelector(".popup__button-typecloseadd");
+  popupFormAdd.addEventListener("submit", createCardinput);
   buttonClose.addEventListener("click", closePopupAdd);
   popupButtonAdd.addEventListener("click", closePopupAdd);
   document.addEventListener("keyup", closePopupAdd);
-
-  popupFormAdd.addEventListener("submit", createCardinput);
 }
 
 function createCardinput(event) {
@@ -63,7 +62,7 @@ function createCardinput(event) {
   popupButtonAdd.classList.toggle("popup_open");
   fix.classList.toggle("fix");
   popupFormAdd.reset();
-  popupFormAdd.removeEventListener("submit", (event) => createCardinput(event));
+  // popupFormAdd.removeEventListener("submit", (event) => createCardinput(event));
 }
 
 const cardsContent = [
@@ -150,7 +149,7 @@ function closeAnimationendPopuOpen(event) {
     const popupContent = document.querySelector(".popup__content-image");
     const popupImage = document.querySelector(".popup_image");
     popupContent.classList.add("popup-closeTransition");
-    let element = document.querySelector(".popup-closeTransition");
+    const element = document.querySelector(".popup-closeTransition");
     element.addEventListener("animationend", (e) => {
       if (e.animationName === "zoomOut") {
         //     //  cerrar el evento o realizar cualquier acción que necesites.
