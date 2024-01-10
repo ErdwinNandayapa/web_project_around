@@ -1,15 +1,14 @@
 import "./validate.js";
-import { fix } from "./script.js";
 
-const $cards = document.querySelector(".cards");
-const $template = document.querySelector("#template__card").content;
-const $fragment = document.createDocumentFragment();
+const cards = document.querySelector(".cards");
+const template = document.querySelector("#template__card").content;
+const fragment = document.createDocumentFragment();
 const buttonAdd = document.querySelector(".profile__button-add");
+const fix = document.querySelector(".body");
 
 buttonAdd.addEventListener("click", popupButtonAdd);
 
 function closePopupAdd(event) {
-  // event.preventDefault();
   if (
     event.target.classList.contains("popup") ||
     event.key === "Escape" ||
@@ -34,35 +33,35 @@ function closePopupAdd(event) {
 
 function popupButtonAdd(event) {
   event.preventDefault();
-  const popupButtonAdd = document.querySelector("#popup__add");
-  popupButtonAdd.classList.toggle("popup_open");
+  const popupButtonAddId = document.querySelector("#popup__add");
+  popupButtonAddId.classList.toggle("popup_open");
   fix.classList.toggle("fix");
   const popupFormAdd = document.querySelector(".popup__form-add");
 
   const buttonClose = document.querySelector(".popup__button-typecloseadd");
-  popupFormAdd.addEventListener("submit", createCardinput);
+  popupFormAdd.addEventListener("submit", createCardInput);
   buttonClose.addEventListener("click", closePopupAdd);
-  popupButtonAdd.addEventListener("click", closePopupAdd);
+  popupButtonAddId.addEventListener("click", closePopupAdd);
   document.addEventListener("keyup", closePopupAdd);
 }
 
-function createCardinput(event) {
+function createCardInput(event) {
   event.preventDefault();
   const name = document.querySelector(".popup__input-name-add");
   const link = document.querySelector(".popup__input-linkadd");
-  const popupButtonAdd = document.querySelector("#popup__add");
+  const popupButtonAddId = document.querySelector("#popup__add");
   const popupFormAdd = document.querySelector(".popup__form-add");
   const element = {
     name: name.value,
     link: link.value,
   };
   const newCard = createCard(element);
-  $cards.prepend(newCard);
+  cards.prepend(newCard);
 
-  popupButtonAdd.classList.toggle("popup_open");
+  popupButtonAddId.classList.toggle("popup_open");
   fix.classList.toggle("fix");
   popupFormAdd.reset();
-  // popupFormAdd.removeEventListener("submit", (event) => createCardinput(event));
+  popupFormAdd.removeEventListener("submit", (event) => createCardInput(event));
 }
 
 const cardsContent = [
@@ -93,34 +92,34 @@ const cardsContent = [
 ];
 
 function createCard(element) {
-  const $card = $template.querySelector(".card");
-  const $clone = document.importNode($card, true);
-  $clone.querySelector("img").setAttribute("src", element.link);
-  $clone.querySelector("img").setAttribute("alt", element.name);
-  $clone.querySelector(".card__text").textContent = element.name;
-  $fragment.appendChild($clone);
+  const card = template.querySelector(".card");
+  const clone = document.importNode(card, true);
+  clone.querySelector("img").setAttribute("src", element.link);
+  clone.querySelector("img").setAttribute("alt", element.name);
+  clone.querySelector(".card__text").textContent = element.name;
+  fragment.appendChild(clone);
 
-  $clone
+  clone
     .querySelector(".button__type-like")
     .addEventListener("click", function (evet) {
       evet.target.classList.toggle("button__like");
     });
 
-  $clone
+  clone
     .querySelector(".button__delete")
     .addEventListener("click", function (evet) {
       evet.target.parentElement.parentElement.remove();
     });
-  $clone
+  clone
     .querySelector(".images__card")
     .addEventListener("click", createPopupImage);
-  return $clone;
+  return clone;
 }
 cardsContent.forEach((element) => {
   createCard(element);
 });
 
-$cards.appendChild($fragment);
+cards.appendChild(fragment);
 
 function createPopupImage(evet) {
   const popupImage = document.querySelector(".popup_image");
@@ -161,4 +160,67 @@ function closeAnimationendPopuOpen(event) {
 
     document.removeEventListener("keydown", closeAnimationendPopuOpen);
   }
+}
+
+// formulario profile
+
+const profileForm = document.querySelector(".popup__form");
+const nameProfession = document.querySelector(".popup__input-name");
+const profesion = document.querySelector(".popup__input-profesion");
+const profileName = document.querySelector(".profile__name");
+const profileProfession = document.querySelector(".profile__profession");
+const popup = document.querySelector(".popup");
+const buttonEdit = document.querySelector(".profile__button-edit");
+const buttonClose = document.querySelector(".popup__button-typeclose");
+
+buttonEdit.addEventListener("click", openProfile);
+profileForm.addEventListener("submit", addProfilenameText);
+popup.addEventListener("click", closeProfiles);
+
+buttonClose.addEventListener("click", closeProfiles);
+
+function openProfile() {
+  nameProfession.value = profileName.textContent;
+  profesion.value = profileProfession.textContent;
+  //abrir popup
+  popup.classList.toggle("popup_open");
+  fix.classList.toggle("fix");
+  document.addEventListener("keyup", closeProfiles);
+}
+function animationZoomOut(e) {
+  if (e.animationName === "zoomOut") {
+    const popupContent = document.querySelector(".popup__content");
+    //     //  cerrar el evento o realizar cualquier acción que necesites.
+    popup.classList.remove("popup_open");
+    const element = document.querySelector(".popup-closeTransition");
+    element.removeEventListener("animationend", animationZoomOut);
+    popupContent.classList.remove("popup-closeTransition");
+    document.removeEventListener("keyup", closeProfiles);
+  }
+}
+
+function closeProfiles(event) {
+  if (
+    event.target.classList.contains("popup") ||
+    event.key === "Escape" ||
+    event.target.classList.contains("popup__button-typeclose")
+  ) {
+    const popupContent = document.querySelector(".popup__content");
+    // Agrega la clase 'popup-close' para iniciar la animación de cierre
+    popupContent.classList.add("popup-closeTransition");
+    //remover transicion
+    const element = document.querySelector(".popup-closeTransition");
+    element.addEventListener("animationend", animationZoomOut);
+    fix.classList.remove("fix");
+  }
+}
+
+function addProfilenameText(event) {
+  event.preventDefault();
+  profileName.textContent = nameProfession.value;
+  profileProfession.textContent = profesion.value;
+  profileForm.reset();
+
+  popup.classList.toggle("popup_open");
+  fix.classList.toggle("fix");
 }

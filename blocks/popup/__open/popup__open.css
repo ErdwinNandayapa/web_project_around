@@ -10,6 +10,7 @@
 .popup_open {
   display: flex;
   position: fixed;
+  overflow-y: hidden;
 }
 .popup_opened {
   display: flex;
