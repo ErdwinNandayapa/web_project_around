@@ -6,9 +6,9 @@
 }
 @font-face {
   font-family: "Inter";
-  src: url(./Inter-Regular.woff2) format("woff2");
-  font-style: normal;
+  src: url(./Inter-SemiBold.woff2) format("woff2");
   font-weight: 600;
+  font-style: semi-bold;
 }
 
 @font-face {
