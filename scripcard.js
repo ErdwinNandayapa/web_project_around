@@ -9,7 +9,7 @@ const buttonAdd = document.querySelector(".profile__button-add");
 buttonAdd.addEventListener("click", popupButtonAdd);
 
 function closePopupAdd(event) {
-  event.preventDefault();
+  // event.preventDefault();
   if (
     event.target.classList.contains("popup") ||
     event.key === "Escape" ||
