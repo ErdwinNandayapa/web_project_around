@@ -249,10 +249,6 @@
 }
 
 @media screen and (max-width: 768px) {
-  .popup__content {
-    max-width: 282px;
-    height: 322px;
-  }
   .popup__button-typesave {
     width: 238px;
     height: 46px;
@@ -264,9 +260,5 @@
   .popup__content {
     max-width: 282px;
     height: 322px;
-  }
-  .popup__button-typesave {
-    width: 238px;
-    height: 46px;
   }
 }
