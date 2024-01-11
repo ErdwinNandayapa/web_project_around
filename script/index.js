@@ -4,6 +4,8 @@ const cards = document.querySelector(".cards");
 const template = document.querySelector("#template__card").content;
 const fragment = document.createDocumentFragment();
 const buttonAdd = document.querySelector(".profile__button-add");
+const sectionBody = document.querySelector(".body");
+//solo puedo quitar el scroll con overflow: hidden en el body, ya intente en varios lados por ejemplo popup_open sigo sin poder hacerlo en css hasta con pseudoelementos ::webkit-scrollbar y nada si me puede decir como quitarlo me ayudaria por eso es el evento (solo funciona con body) tambien quise hacerlo con document.body.style.overflow = "hidden"; pero no, me dijo mi instructor sergio que eso no se deberia hacer, es mejor asi como lo estoy haciendo
 
 buttonAdd.addEventListener("click", popupButtonAdd);
 
@@ -25,7 +27,8 @@ function closePopupAdd(event) {
         document.removeEventListener("keyup", closePopupAdd);
       }
     });
-    document.body.style.overflow = "auto";
+
+    sectionBody.classList.remove("fix");
   }
 }
 
@@ -34,7 +37,7 @@ function popupButtonAdd(event) {
   const popupButtonAddId = document.querySelector("#popup__add");
   popupButtonAddId.classList.toggle("popup_open");
 
-  document.body.style.overflow = "hidden";
+  sectionBody.classList.add("fix");
   const popupFormAdd = document.querySelector(".popup__form-add");
 
   const buttonClose = document.querySelector(".popup__button-typecloseadd");
@@ -58,8 +61,8 @@ function createCardInput(event) {
   cards.prepend(newCard);
 
   popupButtonAddId.classList.toggle("popup_open");
-  // fix.classList.toggle("fix");
-  document.body.style.overflow = "auto";
+
+  sectionBody.classList.remove("fix");
 
   popupFormAdd.reset();
   popupFormAdd.removeEventListener("submit", (event) => createCardInput(event));
@@ -134,7 +137,7 @@ function createPopupImage(evet) {
 
   popupImage.classList.toggle("popup_open");
 
-  document.body.style.overflow = "hidden";
+  sectionBody.classList.add("fix");
 
   buttonClose.addEventListener("click", closeAnimationendPopuOpen);
   popupImage.addEventListener("click", closeAnimationendPopuOpen);
@@ -159,7 +162,7 @@ function closeAnimationendPopuOpen(event) {
       }
     });
 
-    document.body.style.overflow = "auto";
+    sectionBody.classList.remove("fix");
     document.removeEventListener("keydown", closeAnimationendPopuOpen);
   }
 }
@@ -186,7 +189,8 @@ function openProfile() {
   profesion.value = profileProfession.textContent;
   //abrir popup
   popup.classList.toggle("popup_open");
-  document.body.style.overflow = "hidden";
+
+  sectionBody.classList.add("fix");
   document.addEventListener("keyup", closeProfiles);
 }
 function animationZoomOut(e) {
@@ -213,7 +217,8 @@ function closeProfiles(event) {
     //remover transicion
     const element = document.querySelector(".popup-closeTransition");
     element.addEventListener("animationend", animationZoomOut);
-    document.body.style.overflow = "auto";
+
+    sectionBody.classList.remove("fix");
   }
 }
 
@@ -224,5 +229,6 @@ function addProfilenameText(event) {
   profileForm.reset();
 
   popup.classList.toggle("popup_open");
-  document.body.style.overflow = "auto";
+
+  sectionBody.classList.remove("fix");
 }

@@ -1,18 +1,24 @@
-.popup__button-typeclose {
-  background: url(../../../../images/close_button.svg) no-repeat;
-  background-size: 100%;
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-  box-sizing: border-box;
+.button__type-like {
+  background: url(../images/button_like.svg) no-repeat;
+  width: 23px;
+  height: 23px;
+  align-items: center;
   border: none;
-  position: absolute;
-  top: -28px;
-  right: -15px;
+  border: 1px solid #fff;
+  color: white;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.button__like {
+  background: url(../images/like.svg);
+  opacity: 1;
+  border: none;
+  background-repeat: no-repeat;
 }
 
 .button_close {
-  background: url(../../../../images/close_button.svg) no-repeat center;
+  background: url(../images/close_button.svg) no-repeat center;
   width: 24px;
   height: 24px;
   border: none;
@@ -25,7 +31,7 @@
 }
 
 .button__delete {
-  background: url(../../../../images/delete_button.svg) no-repeat;
+  background: url(../images/delete_button.svg) no-repeat;
   width: 19px;
   height: 19px;
   cursor: pointer;
@@ -41,6 +47,4 @@
     top: -8%;
     right: -19px;
   }
-}
-@media screen and (min-width: 768px) and (max-width: 1024px) {
 }
