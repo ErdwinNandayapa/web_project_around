@@ -1,64 +1,71 @@
-function enableValidation({
-  formSelector,
-  inputSelector,
-  submitButtonSelector,
-  inactiveButtonClass,
-  inputErrorClass,
-  errorClass,
-}) {
-  // Selecciona el formulario y los elementos de entrada
-  // const formElement = document.querySelector(formSelector);
-  const formElements = document.querySelectorAll(formSelector);
-  formElements.forEach((formElement) => {
-    const inputElements = Array.from(
-      formElement.querySelectorAll(inputSelector)
+export default class FormValidator {
+  constructor(validationConfig, formElement) {
+    this.formElements = document.querySelectorAll(
+      validationConfig.formSelector
     );
 
-    const submitButtonElement = formElement.querySelector(submitButtonSelector);
+    this.inputSelector = validationConfig.inputSelector;
+    this.submitButtonSelector = validationConfig.submitButtonSelector;
+    this.inactiveButtonClass = validationConfig.inactiveButtonClass;
+    this.inputErrorClass = validationConfig.inputErrorClass;
+    this.errorClass = validationConfig.errorClass;
+    this.enableValidation(formElement);
+  }
 
-    // Deshabilita el botón de envío al inicio
-    submitButtonElement.classList.add(inactiveButtonClass);
+  enableValidation(formElement) {
+    const inputElements = Array.from(
+      formElement.querySelectorAll(this.inputSelector)
+    );
+    const submitButtonElement = formElement.querySelector(
+      this.submitButtonSelector
+    );
+    submitButtonElement.classList.add(this.inactiveButtonClass);
 
-    // Agrega un evento de 'input' a cada elemento de entrada
     inputElements.forEach((inputElement) => {
-      inputElement.addEventListener("input", function () {
-        // Realiza la validación aquí
-        // Si la validación falla, agrega las clases de error
-        if (!inputElement.validity.valid) {
-          inputElement.classList.add(inputErrorClass);
-          // Muestra el mensaje de error
-          const errorElement = formElement.querySelector(
-            `#${inputElement.id}-error`
-          );
-
-          errorElement.textContent = inputElement.validationMessage;
-          errorElement.classList.add(errorClass);
-        } else {
-          // Si la validación es exitosa, elimina las clases de error
-          inputElement.classList.remove(inputErrorClass);
-          const errorElement = formElement.querySelector(
-            `#${inputElement.id}-error`
-          );
-          errorElement.textContent = "";
-          errorElement.classList.remove(errorClass);
-        }
-
-        // Habilita o deshabilita el botón de envío según la validez del formulario
-        if (!formElement.checkValidity()) {
-          submitButtonElement.classList.add(inactiveButtonClass);
-        } else {
-          submitButtonElement.classList.remove(inactiveButtonClass);
-        }
+      inputElement.addEventListener("input", () => {
+        this.handleInput(inputElement, formElement, submitButtonElement);
       });
     });
-  });
+  }
+
+  handleInput(inputElement, formElement, submitButtonElement) {
+    if (!inputElement.validity.valid) {
+      this.showInputError(inputElement, formElement);
+    } else {
+      this.hideInputError(inputElement, formElement);
+    }
+
+    this.toggleSubmitButton(submitButtonElement, formElement);
+  }
+
+  showInputError(inputElement, formElement) {
+    inputElement.classList.add(this.inputErrorClass);
+    const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+    errorElement.textContent = inputElement.validationMessage;
+    errorElement.classList.add(this.errorClass);
+  }
+
+  hideInputError(inputElement, formElement) {
+    inputElement.classList.remove(this.inputErrorClass);
+    const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+    errorElement.textContent = "";
+    errorElement.classList.remove(this.errorClass);
+  }
+
+  toggleSubmitButton(submitButtonElement, formElement) {
+    if (!formElement.checkValidity()) {
+      submitButtonElement.classList.add(this.inactiveButtonClass);
+    } else {
+      submitButtonElement.classList.remove(this.inactiveButtonClass);
+    }
+  }
 }
 
-enableValidation({
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__button",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible",
-});
+// new FormValidator({
+//   formSelector: ".popup__form",
+//   inputSelector: ".popup__input",
+//   submitButtonSelector: ".popup__button",
+//   inactiveButtonClass: "popup__button_disabled",
+//   inputErrorClass: "popup__input_type_error",
+//   errorClass: "popup__error_visible",
+// });
