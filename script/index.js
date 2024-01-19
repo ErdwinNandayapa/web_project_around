@@ -1,5 +1,5 @@
-import Card from "./card.js";
-import FormValidator from "./validate.js";
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
 import { validationConfig } from "./utils.js";
 
 export const cards = document.querySelector(".cards");
