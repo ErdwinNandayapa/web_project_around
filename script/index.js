@@ -1,12 +1,47 @@
-import "./validate.js";
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+import { validationConfig } from "./utils.js";
 
-const cards = document.querySelector(".cards");
-const template = document.querySelector("#template__card").content;
-const fragment = document.createDocumentFragment();
-const buttonAdd = document.querySelector(".profile__button-add");
-const sectionBody = document.querySelector(".body");
-//solo puedo quitar el scroll con overflow: hidden en el body, ya intente en varios lados por ejemplo popup_open sigo sin poder hacerlo en css hasta con pseudoelementos ::webkit-scrollbar y nada si me puede decir como quitarlo me ayudaria por eso es el evento (solo funciona con body) tambien quise hacerlo con document.body.style.overflow = "hidden"; pero no, me dijo mi instructor sergio que eso no se deberia hacer, es mejor asi como lo estoy haciendo
+export const cards = document.querySelector(".cards");
+export const template = document.querySelector("#template__card").content;
+export const fragment = document.createDocumentFragment();
+export const buttonAdd = document.querySelector(".profile__button-add");
+export const sectionBody = document.querySelector(".body"); //document body
+export const profileForm = document.querySelector(".popup__form");
+export const nameProfession = document.querySelector(".popup__input-name");
+export const profesion = document.querySelector(".popup__input-profesion");
+export const profileName = document.querySelector(".profile__name");
+export const profileProfession = document.querySelector(".profile__profession");
+export const popup = document.querySelector(".popup");
+export const buttonEdit = document.querySelector(".profile__button-edit");
+export const buttonClose = document.querySelector(".popup__button-typeclose");
 
+const cardsContent = [
+  {
+    name: "Valle de Yosemite",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
+  },
+  {
+    name: "Lago Louise",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg",
+  },
+  {
+    name: "Montañas Calvas",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
+  },
+  {
+    name: "Latemar",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg",
+  },
+  {
+    name: "Parque Nacional de la Vanoise",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
+  },
+];
 buttonAdd.addEventListener("click", popupButtonAdd);
 
 function closePopupAdd(event) {
@@ -57,7 +92,11 @@ function createCardInput(event) {
     name: name.value,
     link: link.value,
   };
-  const newCard = createCard(element);
+  const newCard = new Card(
+    element.name,
+    element.link,
+    "#template__card"
+  ).createCardElement();
   cards.prepend(newCard);
 
   popupButtonAddId.classList.toggle("popup_open");
@@ -68,83 +107,7 @@ function createCardInput(event) {
   popupFormAdd.removeEventListener("submit", (event) => createCardInput(event));
 }
 
-const cardsContent = [
-  {
-    name: "Valle de Yosemite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
-  },
-  {
-    name: "Lago Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg",
-  },
-  {
-    name: "Montañas Calvas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg",
-  },
-  {
-    name: "Parque Nacional de la Vanoise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
-  },
-];
-
-function createCard(element) {
-  const card = template.querySelector(".card");
-  const clone = document.importNode(card, true);
-  clone.querySelector("img").setAttribute("src", element.link);
-  clone.querySelector("img").setAttribute("alt", element.name);
-  clone.querySelector(".card__text").textContent = element.name;
-  fragment.appendChild(clone);
-
-  clone
-    .querySelector(".button__type-like")
-    .addEventListener("click", function (evet) {
-      evet.target.classList.toggle("button__like");
-    });
-
-  clone
-    .querySelector(".button__delete")
-    .addEventListener("click", function (evet) {
-      evet.target.parentElement.parentElement.remove();
-    });
-  clone
-    .querySelector(".images__card")
-    .addEventListener("click", createPopupImage);
-  return clone;
-}
-cardsContent.forEach((element) => {
-  createCard(element);
-});
-
-cards.appendChild(fragment);
-
-function createPopupImage(evet) {
-  const popupImage = document.querySelector(".popup_image");
-  const popupImageSrc = document.querySelector(".popup__element");
-  const popup__title = popupImageSrc.nextElementSibling;
-  const buttonClose = document.querySelector(".button_close");
-
-  popupImageSrc.src = evet.target.src;
-  popupImageSrc.alt = evet.target.alt;
-  popup__title.textContent = evet.target.alt;
-
-  popupImage.classList.toggle("popup_open");
-
-  sectionBody.classList.add("fix");
-
-  buttonClose.addEventListener("click", closeAnimationendPopuOpen);
-  popupImage.addEventListener("click", closeAnimationendPopuOpen);
-  document.addEventListener("keydown", closeAnimationendPopuOpen);
-}
-
-function closeAnimationendPopuOpen(event) {
+export function closeAnimationendPopuOpen(event) {
   if (
     event.target.classList.contains("popup") ||
     event.key === "Escape" ||
@@ -168,15 +131,6 @@ function closeAnimationendPopuOpen(event) {
 }
 
 // formulario profile
-
-const profileForm = document.querySelector(".popup__form");
-const nameProfession = document.querySelector(".popup__input-name");
-const profesion = document.querySelector(".popup__input-profesion");
-const profileName = document.querySelector(".profile__name");
-const profileProfession = document.querySelector(".profile__profession");
-const popup = document.querySelector(".popup");
-const buttonEdit = document.querySelector(".profile__button-edit");
-const buttonClose = document.querySelector(".popup__button-typeclose");
 
 buttonEdit.addEventListener("click", openProfile);
 profileForm.addEventListener("submit", addProfilenameText);
@@ -229,6 +183,20 @@ function addProfilenameText(event) {
   profileForm.reset();
 
   popup.classList.toggle("popup_open");
-
+  document.removeEventListener("keyup", closeProfiles);
   sectionBody.classList.remove("fix");
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const container = document.querySelector(".cards");
+  cardsContent.forEach(function ({ name, link }) {
+    const cardTemplate = new Card(name, link, "#template__card");
+    const cardElement = cardTemplate.createCardElement();
+    container.prepend(cardElement);
+  });
+});
+
+const formElement = document.querySelector(".popup__form");
+new FormValidator(validationConfig, formElement);
+const formElement2 = document.querySelector(".popup__form-add");
+new FormValidator(validationConfig, formElement2);
