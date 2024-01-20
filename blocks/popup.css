@@ -16,6 +16,31 @@
     transform: scale(0.5);
   }
 }
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes shaking {
+  /* 0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  75% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0);
+  } */
+}
 
 .popup {
   display: none;
@@ -91,7 +116,8 @@
 }
 .profile__button-edit:hover {
   opacity: 0.6;
-  transition: 0.3s ease-in-out;
+
+  animation-play-state: running;
 }
 
 .popup__button-typeclose:hover {

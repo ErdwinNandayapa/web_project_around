@@ -20,6 +20,7 @@
   height: 361px;
   width: 282px;
   position: relative;
+  animation: zoomIn 0.8s;
 }
 .card__text {
   color: #000;
