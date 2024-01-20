@@ -73,6 +73,9 @@ function popupButtonAdd(event) {
   popupButtonAddId.classList.toggle("popup_open");
 
   sectionBody.classList.add("fix");
+  const formElement2 = document.querySelector(".popup__form-add");
+  new FormValidator(validationConfig, formElement2);
+
   const popupFormAdd = document.querySelector(".popup__form-add");
 
   const buttonClose = document.querySelector(".popup__button-typecloseadd");
@@ -141,6 +144,12 @@ buttonClose.addEventListener("click", closeProfiles);
 function openProfile() {
   nameProfession.value = profileName.textContent;
   profesion.value = profileProfession.textContent;
+
+  const formElement = document.querySelector(".popup__form");
+  new FormValidator(validationConfig, formElement);
+  nameProfession.value = profileName.textContent;
+  profesion.value = profileProfession.textContent;
+
   //abrir popup
   popup.classList.toggle("popup_open");
 
@@ -195,8 +204,3 @@ document.addEventListener("DOMContentLoaded", function () {
     container.prepend(cardElement);
   });
 });
-
-const formElement = document.querySelector(".popup__form");
-new FormValidator(validationConfig, formElement);
-const formElement2 = document.querySelector(".popup__form-add");
-new FormValidator(validationConfig, formElement2);

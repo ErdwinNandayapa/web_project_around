@@ -19,7 +19,8 @@ export default class FormValidator {
     const submitButtonElement = formElement.querySelector(
       this.submitButtonSelector
     );
-    submitButtonElement.classList.add(this.inactiveButtonClass);
+    // submitButtonElement.classList.add(this.inactiveButtonClass);
+    this.toggleSubmitButton(submitButtonElement, formElement);
 
     inputElements.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
@@ -53,19 +54,18 @@ export default class FormValidator {
   }
 
   toggleSubmitButton(submitButtonElement, formElement) {
-    if (!formElement.checkValidity()) {
+    const inputElements = Array.from(
+      formElement.querySelectorAll(this.inputSelector)
+    );
+    const hasInvalidInput = inputElements.some(
+      (inputElement) =>
+        !inputElement.validity.valid || inputElement.value.trim() === ""
+    );
+
+    if (hasInvalidInput) {
       submitButtonElement.classList.add(this.inactiveButtonClass);
     } else {
       submitButtonElement.classList.remove(this.inactiveButtonClass);
     }
   }
 }
-
-// new FormValidator({
-//   formSelector: ".popup__form",
-//   inputSelector: ".popup__input",
-//   submitButtonSelector: ".popup__button",
-//   inactiveButtonClass: "popup__button_disabled",
-//   inputErrorClass: "popup__input_type_error",
-//   errorClass: "popup__error_visible",
-// });
