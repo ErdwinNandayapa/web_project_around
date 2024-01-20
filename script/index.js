@@ -147,10 +147,6 @@ function openProfile() {
 
   const formElement = document.querySelector(".popup__form");
   new FormValidator(validationConfig, formElement);
-  // const submitButtonElement = document.querySelector("#popup__profile");
-  // const validator = new FormValidator(validationConfig, formElement);
-  // validator.toggleSubmitButton(submitButtonElement, formElement);
-
   nameProfession.value = profileName.textContent;
   profesion.value = profileProfession.textContent;
 
