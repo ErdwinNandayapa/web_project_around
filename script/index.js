@@ -108,6 +108,7 @@ function createCardInput(event) {
 
   popupFormAdd.reset();
   popupFormAdd.removeEventListener("submit", (event) => createCardInput(event));
+  document.removeEventListener("keyup", closePopupAdd);
 }
 
 export function closeAnimationendPopuOpen(event) {

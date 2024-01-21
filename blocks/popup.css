@@ -109,6 +109,9 @@
 .profile__button-add:hover {
   opacity: 0.6;
   transition: 0.3s ease-in-out;
+  background-color: #4a4c4e;
+  box-shadow: 0 0 20px var(--color);
+  border-color: var(--color);
 }
 .button__type-like:hover {
   opacity: 0.6;
@@ -118,6 +121,9 @@
   opacity: 0.6;
 
   animation-play-state: running;
+  background-color: #4a4c4e;
+  box-shadow: 0 0 20px var(--color);
+  border-color: var(--color);
 }
 
 .popup__button-typeclose:hover {

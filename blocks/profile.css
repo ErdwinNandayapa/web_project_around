@@ -1,3 +1,6 @@
+:root {
+  --color: #17a2ff;
+}
 .profile {
   display: flex;
   padding-top: 2.4rem;
