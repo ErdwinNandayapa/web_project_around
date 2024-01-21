@@ -197,11 +197,11 @@ function addProfilenameText(event) {
   sectionBody.classList.remove("fix");
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const container = document.querySelector(".cards");
-  cardsContent.forEach(function ({ name, link }) {
-    const cardTemplate = new Card(name, link, "#template__card");
-    const cardElement = cardTemplate.createCardElement();
-    container.prepend(cardElement);
-  });
+// document.addEventListener("DOMContentLoaded", function () {
+const container = document.querySelector(".cards");
+cardsContent.forEach(function ({ name, link }) {
+  const cardTemplate = new Card(name, link, "#template__card");
+  const cardElement = cardTemplate.createCardElement();
+  container.prepend(cardElement);
 });
+// });
