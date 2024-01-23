@@ -27,10 +27,10 @@
 
 @keyframes rotate {
   from {
-    transform: rotateX(0deg);
+    transform: rotate(0deg);
   }
   to {
-    transform: rotateX(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -99,14 +99,15 @@
 }
 
 .profile__button-add:hover {
-  opacity: 0.6;
   transition: 0.3s ease-in-out;
   background-color: #4a4c4e;
   box-shadow: 0 0 20px var(--color);
   border-color: var(--color);
 }
 .profile__button-add:hover::before {
-  /* transform: rotateX(180deg); */
+  animation: rotate 1.5s linear infinite;
+}
+.profile__button-edit:hover::before {
   animation: rotate 1.5s linear infinite;
 }
 
@@ -115,12 +116,10 @@
   transition: 0.3s ease-in-out;
 }
 .profile__button-edit:hover {
-  opacity: 0.6;
   animation-play-state: running;
   background-color: #4a4c4e;
   box-shadow: 0 0 20px var(--color);
   border-color: var(--color);
-  animation: spin 3s linear infinite;
 }
 
 .popup__button-typeclose:hover {
