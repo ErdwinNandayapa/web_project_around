@@ -24,22 +24,14 @@
     transform: rotate(360deg);
   }
 }
-@keyframes shaking {
-  /* 0% {
-    transform: translateX(0);
+
+@keyframes rotate {
+  from {
+    transform: rotateX(0deg);
   }
-  25% {
-    transform: translateX(-10px);
+  to {
+    transform: rotateX(360deg);
   }
-  50% {
-    transform: translateX(10px);
-  }
-  75% {
-    transform: translateX(-10px);
-  }
-  100% {
-    transform: translateX(0);
-  } */
 }
 
 .popup {
@@ -113,17 +105,22 @@
   box-shadow: 0 0 20px var(--color);
   border-color: var(--color);
 }
+.profile__button-add:hover::before {
+  /* transform: rotateX(180deg); */
+  animation: rotate 1.5s linear infinite;
+}
+
 .button__type-like:hover {
   opacity: 0.6;
   transition: 0.3s ease-in-out;
 }
 .profile__button-edit:hover {
   opacity: 0.6;
-
   animation-play-state: running;
   background-color: #4a4c4e;
   box-shadow: 0 0 20px var(--color);
   border-color: var(--color);
+  animation: spin 3s linear infinite;
 }
 
 .popup__button-typeclose:hover {
