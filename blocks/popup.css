@@ -99,8 +99,8 @@
 }
 
 .profile__button-add:hover {
-  transition: 0.3s ease-in-out;
-  background-color: #4a4c4e;
+  opacity: 0.6;
+  background-color: #000000;
   box-shadow: 0 0 20px var(--color);
   border-color: var(--color);
 }
@@ -116,8 +116,8 @@
   transition: 0.3s ease-in-out;
 }
 .profile__button-edit:hover {
-  animation-play-state: running;
-  background-color: #4a4c4e;
+  opacity: 0.6;
+  background-color: #000000;
   box-shadow: 0 0 20px var(--color);
   border-color: var(--color);
 }
