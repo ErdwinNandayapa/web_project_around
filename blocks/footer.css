@@ -2,13 +2,16 @@
   max-width: 318px;
   margin-top: 67px;
   margin-bottom: 60px;
-  color: #545454;
 
   font-family: Inter;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+.footer__text {
+  text-decoration: none;
+  color: #545454;
 }
 @media screen and (max-width: 768px) {
   .footer__text {
