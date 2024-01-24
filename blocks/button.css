@@ -1,3 +1,12 @@
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
 .button__type-like {
   background: url(../images/button_like.svg) no-repeat;
   width: 23px;
@@ -15,6 +24,7 @@
   opacity: 1;
   border: none;
   background-repeat: no-repeat;
+  animation: pulse 0.6s ease-in-out infinite;
 }
 
 .button_close {
