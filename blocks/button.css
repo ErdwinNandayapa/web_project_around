@@ -24,7 +24,7 @@
   opacity: 1;
   border: none;
   background-repeat: no-repeat;
-  animation: pulse 0.6s ease-in-out infinite;
+  animation: pulse 1s ease-in-out 2;
 }
 
 .button_close {
