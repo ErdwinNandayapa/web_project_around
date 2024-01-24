@@ -182,6 +182,7 @@
 
 .popup__fieldset {
   border-block: unset;
+  border: none;
 }
 
 .popup__content {
