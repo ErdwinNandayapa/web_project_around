@@ -1,4 +1,4 @@
-import { createPopupImage } from "./utils.js";
+import { createPopupImage, closeButtonCards, buttonLike } from "./utils.js";
 
 export default class Card {
   constructor(name, link, selector) {
@@ -10,15 +10,11 @@ export default class Card {
   _eventListener(clone) {
     this.clone
       .querySelector(".button__type-like")
-      .addEventListener("click", function (evet) {
-        evet.target.classList.toggle("button__like");
-      });
+      .addEventListener("click", buttonLike);
 
     this.clone
       .querySelector(".button__delete")
-      .addEventListener("click", function (evet) {
-        evet.target.parentElement.parentElement.remove();
-      });
+      .addEventListener("click", closeButtonCards);
     this.clone
       .querySelector(".images__card")
       .addEventListener("click", createPopupImage);

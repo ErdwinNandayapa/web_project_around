@@ -17,6 +17,15 @@
   }
 }
 
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .popup {
   display: none;
   flex-direction: column;
@@ -83,15 +92,26 @@
 
 .profile__button-add:hover {
   opacity: 0.6;
-  transition: 0.3s ease-in-out;
+  background-color: #000000;
+  box-shadow: 0 0 20px var(--color);
+  border-color: var(--color);
 }
+.profile__button-add:hover::before {
+  animation: rotate 1.5s linear infinite;
+}
+.profile__button-edit:hover::before {
+  animation: rotate 1.5s linear infinite;
+}
+
 .button__type-like:hover {
   opacity: 0.6;
   transition: 0.3s ease-in-out;
 }
 .profile__button-edit:hover {
   opacity: 0.6;
-  transition: 0.3s ease-in-out;
+  background-color: #000000;
+  box-shadow: 0 0 20px var(--color);
+  border-color: var(--color);
 }
 
 .popup__button-typeclose:hover {

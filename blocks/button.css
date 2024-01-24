@@ -40,6 +40,13 @@
   position: absolute;
   top: 18px;
   left: 247px;
+  transition: 0.3s ease-in-out;
+}
+.button__delete:hover {
+  opacity: 0.8;
+  /* Efecto de sacudida */
+  transform: rotate(-15deg);
+  background: url(../images/basura.svg) no-repeat;
 }
 
 @media screen and (max-width: 768px) {
