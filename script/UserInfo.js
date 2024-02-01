@@ -16,10 +16,10 @@ export default class UserInfo {
     this._jobElement.textContent = job;
   }
 }
-const userInfo = new UserInfo(".profile__name", ".profile__profession");
+// const userInfo = new UserInfo(".profile__name", ".profile__profession");
 
-const datosUsuario = userInfo.getUserInfo();
-console.log(datosUsuario); // { nombre: "NombreActual", trabajo: "TrabajoActual" }
+// const datosUsuario = userInfo.getUserInfo();
+// console.log(datosUsuario); // { nombre: "NombreActual", trabajo: "TrabajoActual" }
 
 // Actualizar información del usuario en la página
-userInfo.setUserInfo("NuevoNombre", "NuevoTrabajo");
+// userInfo.setUserInfo("NuevoNombre", "NuevoTrabajo");

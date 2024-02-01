@@ -4,6 +4,7 @@ import { validationConfig } from "./utils.js";
 import PopupWithImage from "./PopupWithImage.js";
 import Section from "./Section.js";
 import Popup from "./Popup.js";
+import UserInfo from "./UserInfo.js";
 
 export const cards = document.querySelector(".cards");
 export const template = document.querySelector("#template__card").content;
@@ -73,6 +74,7 @@ function closePopupAdd(event) {
 function popupButtonAdd(event) {
   event.preventDefault();
   const popupButtonAddId = document.querySelector("#popup__add");
+
   popupButtonAddId.classList.toggle("popup_open");
 
   sectionBody.classList.add("fix");
@@ -101,7 +103,8 @@ function createCardInput(event) {
   const newCard = new Card(
     element.name,
     element.link,
-    "#template__card"
+    "#template__card",
+    imagePopup.open
   ).createCardElement();
   cards.prepend(newCard);
 
@@ -146,8 +149,12 @@ popup.addEventListener("click", closeProfiles);
 buttonClose.addEventListener("click", closeProfiles);
 
 function openProfile() {
-  nameProfession.value = profileName.textContent;
-  profesion.value = profileProfession.textContent;
+  const userInfo = new UserInfo({
+    nameSelector: ".profile__name",
+    jobSelector: ".profile__profession",
+  });
+  const datosUsuario = userInfo.getUserInfo();
+  console.log(datosUsuario);
 
   const formElement = document.querySelector(".popup__form");
   new FormValidator(validationConfig, formElement);
@@ -192,9 +199,9 @@ function closeProfiles(event) {
 
 function addProfilenameText(event) {
   event.preventDefault();
-  console.log("prueba");
-  // profileName.textContent = nameProfession.value;
-  // profileProfession.textContent = profesion.value;
+  // console.log("prueba");
+  profileName.textContent = nameProfession.value;
+  profileProfession.textContent = profesion.value;
   profileForm.reset();
 
   popup.classList.toggle("popup_open");
@@ -204,17 +211,15 @@ function addProfilenameText(event) {
 
 const imagePopup = new PopupWithImage(".popup_image");
 
-// function handleCardClick(link, name) {
-//   imagePopup.open(link, name);
-// }
-
 const defaultCardList = new Section(
   {
     data: cardsContent,
     renderer: (item) => {
-      const card = new Card(item.name, item.link, "#template__card", () =>
-        // handleCardClick(item.link, item.name)
-        imagePopup.open(item.link, item.name)
+      const card = new Card(
+        item.name,
+        item.link,
+        "#template__card",
+        imagePopup.open
       );
       const cardElement = card.createCardElement();
       defaultCardList.setItem(cardElement);

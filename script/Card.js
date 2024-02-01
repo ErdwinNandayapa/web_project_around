@@ -18,7 +18,7 @@ export default class Card {
       .addEventListener("click", closeButtonCards);
 
     this.clone.querySelector(".images__card").addEventListener("click", () => {
-      this._handleCardClick(this._name, this._link);
+      this._handleCardClick(this.name, this.link);
     });
 
     return clone;

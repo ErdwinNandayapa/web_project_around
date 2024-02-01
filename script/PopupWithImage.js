@@ -7,7 +7,7 @@ export default class PopupWithImage extends Popup {
     this._closeButton.addEventListener("click", () => this.close());
   }
 
-  open(link, name) {
+  open(name, link) {
     super.open();
 
     const popupImageSrc = document.querySelector(".popup__element");
