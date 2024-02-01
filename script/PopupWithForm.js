@@ -2,7 +2,7 @@ class PopupWithForm extends Popup {
   constructor(popupSelector, formSubmitHandler) {
     super(popupSelector);
     this._formSubmitHandler = formSubmitHandler;
-    this._form = this._popup.querySelector("form");
+    this._form = this._popup.querySelector(".popup__form");
   }
 
   _getInputValues() {
@@ -22,6 +22,10 @@ class PopupWithForm extends Popup {
       this.close();
     });
   }
+  open() {
+    super.open();
+    this._form.reset();
+  }
 
   close() {
     super.close();
@@ -32,10 +36,7 @@ class PopupWithForm extends Popup {
 function formSubmitHandler(formValues) {
   console.log(formValues);
 }
-const popupWithForm = new PopupWithForm(
-  ".my-popup-selector",
-  formSubmitHandler
-);
+const popupWithForm = new PopupWithForm(".selector", formSubmitHandler);
 
 // Ahora puedes llamar a los métodos en la instancia
 popupWithForm.setEventListeners();
