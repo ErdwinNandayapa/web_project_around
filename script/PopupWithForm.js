@@ -1,4 +1,5 @@
-class PopupWithForm extends Popup {
+import Popup from "./Popup.js";
+export default class PopupWithForm extends Popup {
   constructor(popupSelector, formSubmitHandler) {
     super(popupSelector);
     this._formSubmitHandler = formSubmitHandler;
@@ -36,7 +37,7 @@ class PopupWithForm extends Popup {
 function formSubmitHandler(formValues) {
   console.log(formValues);
 }
-const popupWithForm = new PopupWithForm(".selector", formSubmitHandler);
+// const popupWithForm = new PopupWithForm(".selector", formSubmitHandler);
 
-// Ahora puedes llamar a los métodos en la instancia
-popupWithForm.setEventListeners();
+// // Ahora puedes llamar a los métodos en la instancia
+// popupWithForm.setEventListeners();

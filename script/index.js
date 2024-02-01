@@ -5,6 +5,7 @@ import PopupWithImage from "./PopupWithImage.js";
 import Section from "./Section.js";
 import Popup from "./Popup.js";
 import UserInfo from "./UserInfo.js";
+import PopupWithForm from "./PopupWithForm.js";
 
 export const cards = document.querySelector(".cards");
 export const template = document.querySelector("#template__card").content;
@@ -16,9 +17,15 @@ export const nameProfession = document.querySelector(".popup__input-name");
 export const profesion = document.querySelector(".popup__input-profesion");
 export const profileName = document.querySelector(".profile__name");
 export const profileProfession = document.querySelector(".profile__profession");
-export const popup = document.querySelector(".popup");
+// export const popup = document.querySelector(".popup");
+const popup = new Popup(".popup");
 export const buttonEdit = document.querySelector(".profile__button-edit");
 export const buttonClose = document.querySelector(".popup__button-typeclose");
+const userInfo = new UserInfo({
+  nameSelector: ".profile__name",
+  jobSelector: ".profile__profession",
+});
+const userData = userInfo.getUserInfo();
 
 const cardsContent = [
   {
@@ -48,35 +55,12 @@ const cardsContent = [
 ];
 buttonAdd.addEventListener("click", popupButtonAdd);
 
-function closePopupAdd(event) {
-  if (
-    event.target.classList.contains("popup") ||
-    event.key === "Escape" ||
-    event.target.classList.contains("popup__button-typecloseadd")
-  ) {
-    const popupButtonClose = document.querySelector("#popup__add");
-    const popupContent = document.querySelector(".popup__content-add");
-    popupContent.classList.add("popup-closeTransition");
-    const element = document.querySelector(".popup-closeTransition");
-
-    element.addEventListener("animationend", (e) => {
-      if (e.animationName === "zoomOut") {
-        popupContent.classList.remove("popup-closeTransition");
-        popupButtonClose.classList.remove("popup_open");
-        document.removeEventListener("keyup", closePopupAdd);
-      }
-    });
-
-    sectionBody.classList.remove("fix");
-  }
-}
-
 function popupButtonAdd(event) {
   event.preventDefault();
   const popupButtonAddId = document.querySelector("#popup__add");
 
-  popupButtonAddId.classList.toggle("popup_open");
-
+  // popupButtonAddId.classList.toggle("popup_open"); //preguntar
+  popup.open();
   sectionBody.classList.add("fix");
   const formElement2 = document.querySelector(".popup__form-add");
   new FormValidator(validationConfig, formElement2);
@@ -85,9 +69,6 @@ function popupButtonAdd(event) {
 
   const buttonClose = document.querySelector(".popup__button-typecloseadd");
   popupFormAdd.addEventListener("submit", createCardInput);
-  buttonClose.addEventListener("click", closePopupAdd);
-  popupButtonAddId.addEventListener("click", closePopupAdd);
-  document.addEventListener("keyup", closePopupAdd);
 }
 
 function createCardInput(event) {
@@ -111,102 +92,25 @@ function createCardInput(event) {
   popupButtonAddId.classList.toggle("popup_open");
 
   sectionBody.classList.remove("fix");
-
   popupFormAdd.reset();
+
   popupFormAdd.removeEventListener("submit", (event) => createCardInput(event));
   document.removeEventListener("keyup", closePopupAdd);
-}
-
-export function closeAnimationendPopuOpen(event) {
-  if (
-    event.target.classList.contains("popup") ||
-    event.key === "Escape" ||
-    event.target.classList.contains("button_close")
-  ) {
-    const popupContent = document.querySelector(".popup__content-image");
-    const popupImage = document.querySelector(".popup_image");
-    popupContent.classList.add("popup-closeTransition");
-    const element = document.querySelector(".popup-closeTransition");
-    element.addEventListener("animationend", (e) => {
-      if (e.animationName === "zoomOut") {
-        //     //  cerrar el evento o realizar cualquier acción que necesites.
-        popupImage.classList.remove("popup_open");
-        popupContent.classList.remove("popup-closeTransition");
-      }
-    });
-
-    sectionBody.classList.remove("fix");
-    document.removeEventListener("keydown", closeAnimationendPopuOpen);
-  }
 }
 
 // formulario profile
 
 buttonEdit.addEventListener("click", openProfile);
-profileForm.addEventListener("submit", addProfilenameText);
-popup.addEventListener("click", closeProfiles);
-
-buttonClose.addEventListener("click", closeProfiles);
 
 function openProfile() {
-  const userInfo = new UserInfo({
-    nameSelector: ".profile__name",
-    jobSelector: ".profile__profession",
-  });
-  const datosUsuario = userInfo.getUserInfo();
-  console.log(datosUsuario);
+  nameProfession.value = userData.name;
+  profesion.value = userData.job;
 
   const formElement = document.querySelector(".popup__form");
   new FormValidator(validationConfig, formElement);
-  nameProfession.value = profileName.textContent;
-  profesion.value = profileProfession.textContent;
-  const popup1 = new Popup(".popup");
-  //abrir popup
-  popup.classList.toggle("popup_open");
-  // popup1.open();
-  // popup.open();
+
+  popup.open();
   sectionBody.classList.add("fix");
-  document.addEventListener("keyup", closeProfiles);
-}
-function animationZoomOut(e) {
-  if (e.animationName === "zoomOut") {
-    const popupContent = document.querySelector(".popup__content");
-    //     //  cerrar el evento o realizar cualquier acción que necesites.
-    popup.classList.remove("popup_open");
-    const element = document.querySelector(".popup-closeTransition");
-    element.removeEventListener("animationend", animationZoomOut);
-    popupContent.classList.remove("popup-closeTransition");
-    document.removeEventListener("keyup", closeProfiles);
-  }
-}
-
-function closeProfiles(event) {
-  if (
-    event.target.classList.contains("popup") ||
-    event.key === "Escape" ||
-    event.target.classList.contains("popup__button-typeclose")
-  ) {
-    const popupContent = document.querySelector(".popup__content");
-    // Agrega la clase 'popup-close' para iniciar la animación de cierre
-    popupContent.classList.add("popup-closeTransition");
-    //remover transicion
-    const element = document.querySelector(".popup-closeTransition");
-    element.addEventListener("animationend", animationZoomOut);
-
-    sectionBody.classList.remove("fix");
-  }
-}
-
-function addProfilenameText(event) {
-  event.preventDefault();
-  // console.log("prueba");
-  profileName.textContent = nameProfession.value;
-  profileProfession.textContent = profesion.value;
-  profileForm.reset();
-
-  popup.classList.toggle("popup_open");
-  document.removeEventListener("keyup", closeProfiles);
-  sectionBody.classList.remove("fix");
 }
 
 const imagePopup = new PopupWithImage(".popup_image");
@@ -229,3 +133,13 @@ const defaultCardList = new Section(
 );
 
 defaultCardList.renderItems();
+
+function formSubmitHandler(formValues) {
+  userInfo.setUserInfo({ name: nameProfession.value, job: profesion.value });
+  popup.close();
+  sectionBody.classList.remove("fix");
+}
+const popupWithForm = new PopupWithForm(".popup__edit", formSubmitHandler);
+
+// Ahora puedes llamar a los métodos en la instancia
+popupWithForm.setEventListeners();

@@ -1,4 +1,4 @@
-import { sectionBody, closeAnimationendPopuOpen } from "./index.js";
+import { sectionBody } from "./index.js";
 
 export function createPopupImage(evet) {
   const popupImage = document.querySelector(".popup_image");
@@ -13,9 +13,9 @@ export function createPopupImage(evet) {
   console.log("imagen");
   sectionBody.classList.add("fix");
 
-  buttonClose.addEventListener("click", closeAnimationendPopuOpen);
-  popupImage.addEventListener("click", closeAnimationendPopuOpen);
-  document.addEventListener("keydown", closeAnimationendPopuOpen);
+  // buttonClose.addEventListener("click", closeAnimationendPopuOpen);
+  // popupImage.addEventListener("click", closeAnimationendPopuOpen);
+  // document.addEventListener("keydown", closeAnimationendPopuOpen);
 }
 
 export function closeButtonCards(event) {
