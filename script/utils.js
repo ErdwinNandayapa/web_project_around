@@ -10,6 +10,7 @@ export function createPopupImage(evet) {
   popup__title.textContent = evet.target.alt;
 
   popupImage.classList.toggle("popup_open");
+  console.log("imagen");
   sectionBody.classList.add("fix");
 
   buttonClose.addEventListener("click", closeAnimationendPopuOpen);

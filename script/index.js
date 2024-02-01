@@ -1,6 +1,9 @@
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 import { validationConfig } from "./utils.js";
+import PopupWithImage from "./PopupWithImage.js";
+import Section from "./Section.js";
+import Popup from "./Popup.js";
 
 export const cards = document.querySelector(".cards");
 export const template = document.querySelector("#template__card").content;
@@ -150,10 +153,11 @@ function openProfile() {
   new FormValidator(validationConfig, formElement);
   nameProfession.value = profileName.textContent;
   profesion.value = profileProfession.textContent;
-
+  const popup1 = new Popup(".popup");
   //abrir popup
   popup.classList.toggle("popup_open");
-
+  // popup1.open();
+  // popup.open();
   sectionBody.classList.add("fix");
   document.addEventListener("keyup", closeProfiles);
 }
@@ -188,8 +192,9 @@ function closeProfiles(event) {
 
 function addProfilenameText(event) {
   event.preventDefault();
-  profileName.textContent = nameProfession.value;
-  profileProfession.textContent = profesion.value;
+  console.log("prueba");
+  // profileName.textContent = nameProfession.value;
+  // profileProfession.textContent = profesion.value;
   profileForm.reset();
 
   popup.classList.toggle("popup_open");
@@ -197,11 +202,25 @@ function addProfilenameText(event) {
   sectionBody.classList.remove("fix");
 }
 
-// document.addEventListener("DOMContentLoaded", function () {
-const container = document.querySelector(".cards");
-cardsContent.forEach(function ({ name, link }) {
-  const cardTemplate = new Card(name, link, "#template__card");
-  const cardElement = cardTemplate.createCardElement();
-  container.prepend(cardElement);
-});
-// });
+const imagePopup = new PopupWithImage(".popup_image");
+
+// function handleCardClick(link, name) {
+//   imagePopup.open(link, name);
+// }
+
+const defaultCardList = new Section(
+  {
+    data: cardsContent,
+    renderer: (item) => {
+      const card = new Card(item.name, item.link, "#template__card", () =>
+        // handleCardClick(item.link, item.name)
+        imagePopup.open(item.link, item.name)
+      );
+      const cardElement = card.createCardElement();
+      defaultCardList.setItem(cardElement);
+    },
+  },
+  ".cards"
+);
+
+defaultCardList.renderItems();

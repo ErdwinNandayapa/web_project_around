@@ -1,10 +1,11 @@
 import { createPopupImage, closeButtonCards, buttonLike } from "./utils.js";
 
 export default class Card {
-  constructor(name, link, selector) {
+  constructor(name, link, selector, handleCardClick) {
     this.name = name;
     this.link = link;
     this.selector = selector;
+    this._handleCardClick = handleCardClick;
   }
 
   _eventListener(clone) {
@@ -15,9 +16,11 @@ export default class Card {
     this.clone
       .querySelector(".button__delete")
       .addEventListener("click", closeButtonCards);
-    this.clone
-      .querySelector(".images__card")
-      .addEventListener("click", createPopupImage);
+
+    this.clone.querySelector(".images__card").addEventListener("click", () => {
+      this._handleCardClick(this._name, this._link);
+    });
+
     return clone;
   }
 
