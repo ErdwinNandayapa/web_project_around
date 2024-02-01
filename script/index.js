@@ -18,7 +18,7 @@ export const profesion = document.querySelector(".popup__input-profesion");
 export const profileName = document.querySelector(".profile__name");
 export const profileProfession = document.querySelector(".profile__profession");
 // export const popup = document.querySelector(".popup");
-const popup = new Popup(".popup");
+
 export const buttonEdit = document.querySelector(".profile__button-edit");
 export const buttonClose = document.querySelector(".popup__button-typeclose");
 const userInfo = new UserInfo({
@@ -57,17 +57,14 @@ buttonAdd.addEventListener("click", popupButtonAdd);
 
 function popupButtonAdd(event) {
   event.preventDefault();
-  const popupButtonAddId = document.querySelector("#popup__add");
-
-  // popupButtonAddId.classList.toggle("popup_open"); //preguntar
-  popup.open();
+  const popup = new Popup("#popup__add");
+  popup.open(); //add
   sectionBody.classList.add("fix");
+
   const formElement2 = document.querySelector(".popup__form-add");
   new FormValidator(validationConfig, formElement2);
-
   const popupFormAdd = document.querySelector(".popup__form-add");
 
-  const buttonClose = document.querySelector(".popup__button-typecloseadd");
   popupFormAdd.addEventListener("submit", createCardInput);
 }
 
@@ -103,6 +100,7 @@ function createCardInput(event) {
 buttonEdit.addEventListener("click", openProfile);
 
 function openProfile() {
+  const popup = new Popup(".popup");
   nameProfession.value = userData.name;
   profesion.value = userData.job;
 
