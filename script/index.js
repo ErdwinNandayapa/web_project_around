@@ -7,14 +7,6 @@ import Popup from "./Popup.js";
 import UserInfo from "./UserInfo.js";
 import PopupWithForm from "./PopupWithForm.js";
 
-// export const cards = document.querySelector(".cards");
-// export const template = document.querySelector("#template__card").content;
-// export const fragment = document.createDocumentFragment();
-// export const profileForm = document.querySelector(".popup__form");
-// export const profileName = document.querySelector(".profile__name");
-// export const profileProfession = document.querySelector(".profile__profession");
-// export const buttonClose = document.querySelector(".popup__button-typeclose");
-// export const sectionBody = document.querySelector(".body"); //document body
 export const buttonAdd = document.querySelector(".profile__button-add");
 export const nameProfession = document.querySelector(".popup__input-name");
 export const profesion = document.querySelector(".popup__input-profesion");
