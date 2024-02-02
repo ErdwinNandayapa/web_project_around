@@ -12,33 +12,12 @@ export const nameProfession = document.querySelector(".popup__input-name");
 export const profesion = document.querySelector(".popup__input-profesion");
 export const buttonEdit = document.querySelector(".profile__button-edit");
 const imagePopup = new PopupWithImage(".popup_image");
-
 const popupWithFormAdd = new PopupWithForm(".popup__add", formSubmitHandlerAdd);
 const popupWithFormEdit = new PopupWithForm(".popup__edit", formSubmitHandler);
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
   jobSelector: ".profile__profession",
 });
-new FormValidator(validationConfig, formValidaPlace);
-
-const defaultCardList = new Section(
-  {
-    data: cardsContent,
-    renderer: (item) => {
-      const card = new Card(
-        item.name,
-        item.link,
-        "#template__card",
-        imagePopup.open
-      );
-      const cardElement = card.createCardElement();
-      defaultCardList.setItem(cardElement);
-    },
-  },
-  ".cards"
-);
-buttonAdd.addEventListener("click", popupButtonAdd);
-buttonEdit.addEventListener("click", openProfile);
 
 function popupButtonAdd(event) {
   event.preventDefault();
@@ -72,7 +51,26 @@ function formSubmitHandlerAdd(formValues) {
   defaultCardList.setItem(newCard);
   popupWithFormEdit.close();
 }
-
+buttonAdd.addEventListener("click", popupButtonAdd);
+buttonEdit.addEventListener("click", openProfile);
+// Inicialización
+const defaultCardList = new Section(
+  {
+    data: cardsContent,
+    renderer: (item) => {
+      const card = new Card(
+        item.name,
+        item.link,
+        "#template__card",
+        imagePopup.open
+      );
+      const cardElement = card.createCardElement();
+      defaultCardList.setItem(cardElement);
+    },
+  },
+  ".cards"
+);
+new FormValidator(validationConfig, formValidaPlace);
 defaultCardList.renderItems();
 popupWithFormEdit.setEventListeners();
 popupWithFormAdd.setEventListeners();
