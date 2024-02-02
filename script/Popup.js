@@ -36,9 +36,3 @@ export default class Popup {
     }
   }
 }
-
-// const imagePopup = new ImagePopup(".popup_image");
-// imagePopup.open(imageUrl);
-
-// const popup = new Popup(".popup");
-// popup.setEventListeners();

@@ -3,7 +3,6 @@ import FormValidator from "./FormValidator.js";
 import { validationConfig } from "./utils.js";
 import PopupWithImage from "./PopupWithImage.js";
 import Section from "./Section.js";
-import Popup from "./Popup.js";
 import UserInfo from "./UserInfo.js";
 import PopupWithForm from "./PopupWithForm.js";
 
