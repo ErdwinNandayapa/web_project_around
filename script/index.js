@@ -93,8 +93,8 @@ defaultCardList.renderItems();
 
 function formSubmitHandler(formValues) {
   userInfo.setUserInfo({
-    name: formValues["input input-name"],
-    job: formValues["input input-job"],
+    name: formValues["input-name"],
+    job: formValues["input-job"],
   });
   console.log(formValues);
   popup.close();
@@ -104,8 +104,8 @@ popupWithFormEdit.setEventListeners();
 
 function formSubmitHandlerAdd(formValues) {
   const newCard = new Card(
-    formValues["input input-nameadd"],
-    formValues["input input-job"],
+    formValues["input-nameadd"],
+    formValues["input-url"],
     "#template__card",
     imagePopup.open
   ).createCardElement();
