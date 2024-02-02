@@ -11,9 +11,9 @@ export const buttonAdd = document.querySelector(".profile__button-add");
 export const nameProfession = document.querySelector(".popup__input-name");
 export const profesion = document.querySelector(".popup__input-profesion");
 export const buttonEdit = document.querySelector(".profile__button-edit");
-const imagePopup = new PopupWithImage("#popup_image");
-const popupWithFormAdd = new PopupWithForm("#popup__add", formSubmitHandlerAdd);
-const popupWithFormEdit = new PopupWithForm("#popup__edit", formSubmitHandler);
+const imagePopup = new PopupWithImage(".popup_image");
+const popupWithFormAdd = new PopupWithForm(".popup__add", formSubmitHandlerAdd);
+const popupWithFormEdit = new PopupWithForm(".popup__edit", formSubmitHandler);
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
   jobSelector: ".profile__profession",
