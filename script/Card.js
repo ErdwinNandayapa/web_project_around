@@ -1,4 +1,4 @@
-import { createPopupImage, closeButtonCards, buttonLike } from "./utils.js";
+import { closeButtonCards, buttonLike } from "./utils.js";
 
 export default class Card {
   constructor(name, link, selector, handleCardClick) {

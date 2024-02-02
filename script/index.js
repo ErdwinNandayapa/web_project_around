@@ -14,8 +14,8 @@ import PopupWithForm from "./PopupWithForm.js";
 // export const profileName = document.querySelector(".profile__name");
 // export const profileProfession = document.querySelector(".profile__profession");
 // export const buttonClose = document.querySelector(".popup__button-typeclose");
+// export const sectionBody = document.querySelector(".body"); //document body
 export const buttonAdd = document.querySelector(".profile__button-add");
-export const sectionBody = document.querySelector(".body"); //document body
 export const nameProfession = document.querySelector(".popup__input-name");
 export const profesion = document.querySelector(".popup__input-profesion");
 export const buttonEdit = document.querySelector(".profile__button-edit");
@@ -57,16 +57,11 @@ buttonAdd.addEventListener("click", popupButtonAdd);
 function popupButtonAdd(event) {
   event.preventDefault();
   popupFormAdd.open(); //add
-  sectionBody.classList.add("fix");
-
   const formElement2 = document.querySelector(".popup__form-add");
   new FormValidator(validationConfig, formElement2);
 }
-
 // formulario profile
-
 buttonEdit.addEventListener("click", openProfile);
-
 function openProfile() {
   const userData = userInfo.getUserInfo();
   nameProfession.value = userData.name;
@@ -74,9 +69,7 @@ function openProfile() {
   const formElement = document.querySelector(".popup__form");
   new FormValidator(validationConfig, formElement);
   popup.open();
-  sectionBody.classList.add("fix");
 }
-
 const imagePopup = new PopupWithImage(".popup_image");
 
 const defaultCardList = new Section(
@@ -105,9 +98,9 @@ function formSubmitHandler(formValues) {
   });
   console.log(formValues);
   popup.close();
-  sectionBody.classList.remove("fix");
 }
 const popupWithFormEdit = new PopupWithForm(".popup__edit", formSubmitHandler);
+popupWithFormEdit.setEventListeners();
 
 function formSubmitHandlerAdd(formValues) {
   const newCard = new Card(
@@ -118,10 +111,7 @@ function formSubmitHandlerAdd(formValues) {
   ).createCardElement();
   defaultCardList.setItem(newCard);
   popup.close();
-  sectionBody.classList.remove("fix");
 }
 
 const popupWithFormAdd = new PopupWithForm("#popup__add", formSubmitHandlerAdd);
-
-popupWithFormEdit.setEventListeners();
 popupWithFormAdd.setEventListeners();

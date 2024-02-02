@@ -19,7 +19,7 @@ export default class PopupWithImage extends Popup {
 
   close() {
     super.close();
-    super.setEventListeners(event);
+    super.setEventListeners();
     document.removeEventListener("keydown", this._handleEscClose);
   }
 }
