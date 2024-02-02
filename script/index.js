@@ -63,36 +63,6 @@ function popupButtonAdd(event) {
 
   const formElement2 = document.querySelector(".popup__form-add");
   new FormValidator(validationConfig, formElement2);
-  const popupFormAdd = document.querySelector(".popup__form-add");
-
-  popupFormAdd.addEventListener("submit", createCardInput);
-}
-
-function createCardInput(event) {
-  event.preventDefault();
-  const name = document.querySelector(".popup__input-name-add");
-  const link = document.querySelector(".popup__input-linkadd");
-  const popupButtonAddId = document.querySelector("#popup__add");
-  const popupFormAdd = document.querySelector(".popup__form-add");
-  const element = {
-    name: name.value,
-    link: link.value,
-  };
-  const newCard = new Card(
-    element.name,
-    element.link,
-    "#template__card",
-    imagePopup.open
-  ).createCardElement();
-  cards.prepend(newCard);
-
-  popupButtonAddId.classList.toggle("popup_open");
-
-  sectionBody.classList.remove("fix");
-  popupFormAdd.reset();
-
-  popupFormAdd.removeEventListener("submit", (event) => createCardInput(event));
-  document.removeEventListener("keyup", closePopupAdd);
 }
 
 // formulario profile
@@ -132,12 +102,29 @@ const defaultCardList = new Section(
 
 defaultCardList.renderItems();
 
-function formSubmitHandler(formValues) {
-  userInfo.setUserInfo({ name: nameProfession.value, job: profesion.value });
+function formSubmitHandler(formValues, action) {
+  if (action === "edit") {
+    userInfo.setUserInfo({ name: nameProfession.value, job: profesion.value });
+  } else if (action === "add") {
+    const newCard = new Card(
+      formValues["input input-nameadd"],
+      formValues["input input-job"],
+      "#template__card",
+      imagePopup.open
+    ).createCardElement();
+    defaultCardList.setItem(newCard);
+    console.log(formValues);
+  }
+  const popup = new Popup(".popup");
   popup.close();
   sectionBody.classList.remove("fix");
 }
-const popupWithForm = new PopupWithForm(".popup__edit", formSubmitHandler);
+const popupWithFormEdit = new PopupWithForm(".popup__edit", (formValues) =>
+  formSubmitHandler(formValues, "edit")
+);
+const popupWithFormAdd = new PopupWithForm("#popup__add", (formValues) =>
+  formSubmitHandler(formValues, "add")
+);
 
-// Ahora puedes llamar a los métodos en la instancia
-popupWithForm.setEventListeners();
+popupWithFormEdit.setEventListeners();
+popupWithFormAdd.setEventListeners();

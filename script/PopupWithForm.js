@@ -34,9 +34,9 @@ export default class PopupWithForm extends Popup {
   }
 }
 
-function formSubmitHandler(formValues) {
-  console.log(formValues);
-}
+// function formSubmitHandler(formValues) {
+//   console.log(formValues);
+// }
 // const popupWithForm = new PopupWithForm(".selector", formSubmitHandler);
 
 // // Ahora puedes llamar a los métodos en la instancia
