@@ -12,12 +12,15 @@ export const nameProfession = document.querySelector(".popup__input-name");
 export const profesion = document.querySelector(".popup__input-profesion");
 export const buttonEdit = document.querySelector(".profile__button-edit");
 const imagePopup = new PopupWithImage(".popup_image");
+const formValidaProfile = document.querySelector(".popup__form");
+const formValidaPlace = document.querySelector(".popup__form-add");
 const popupWithFormAdd = new PopupWithForm(".popup__add", formSubmitHandlerAdd);
 const popupWithFormEdit = new PopupWithForm(".popup__edit", formSubmitHandler);
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
   jobSelector: ".profile__profession",
 });
+new FormValidator(validationConfig, formValidaPlace);
 const cardsContent = [
   {
     name: "Valle de Yosemite",
@@ -67,16 +70,13 @@ buttonEdit.addEventListener("click", openProfile);
 function popupButtonAdd(event) {
   event.preventDefault();
   popupWithFormAdd.open(); //add
-  const formElement2 = document.querySelector(".popup__form-add");
-  new FormValidator(validationConfig, formElement2);
 }
 
 function openProfile() {
   const userData = userInfo.getUserInfo();
   nameProfession.value = userData.name;
   profesion.value = userData.job;
-  const formElement = document.querySelector(".popup__form");
-  new FormValidator(validationConfig, formElement);
+  new FormValidator(validationConfig, formValidaProfile);
   popupWithFormEdit.open();
 }
 
