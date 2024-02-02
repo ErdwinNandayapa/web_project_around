@@ -7,25 +7,24 @@ import Popup from "./Popup.js";
 import UserInfo from "./UserInfo.js";
 import PopupWithForm from "./PopupWithForm.js";
 
-export const cards = document.querySelector(".cards");
-export const template = document.querySelector("#template__card").content;
-export const fragment = document.createDocumentFragment();
+// export const cards = document.querySelector(".cards");
+// export const template = document.querySelector("#template__card").content;
+// export const fragment = document.createDocumentFragment();
+// export const profileForm = document.querySelector(".popup__form");
+// export const profileName = document.querySelector(".profile__name");
+// export const profileProfession = document.querySelector(".profile__profession");
+// export const buttonClose = document.querySelector(".popup__button-typeclose");
 export const buttonAdd = document.querySelector(".profile__button-add");
 export const sectionBody = document.querySelector(".body"); //document body
-export const profileForm = document.querySelector(".popup__form");
 export const nameProfession = document.querySelector(".popup__input-name");
 export const profesion = document.querySelector(".popup__input-profesion");
-export const profileName = document.querySelector(".profile__name");
-export const profileProfession = document.querySelector(".profile__profession");
-// export const popup = document.querySelector(".popup");
-
 export const buttonEdit = document.querySelector(".profile__button-edit");
-export const buttonClose = document.querySelector(".popup__button-typeclose");
+const popupFormAdd = new Popup("#popup__add");
+const popup = new Popup(".popup");
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
   jobSelector: ".profile__profession",
 });
-const userData = userInfo.getUserInfo();
 
 const cardsContent = [
   {
@@ -57,8 +56,7 @@ buttonAdd.addEventListener("click", popupButtonAdd);
 
 function popupButtonAdd(event) {
   event.preventDefault();
-  const popup = new Popup("#popup__add");
-  popup.open(); //add
+  popupFormAdd.open(); //add
   sectionBody.classList.add("fix");
 
   const formElement2 = document.querySelector(".popup__form-add");
@@ -70,13 +68,11 @@ function popupButtonAdd(event) {
 buttonEdit.addEventListener("click", openProfile);
 
 function openProfile() {
-  const popup = new Popup(".popup");
+  const userData = userInfo.getUserInfo();
   nameProfession.value = userData.name;
   profesion.value = userData.job;
-
   const formElement = document.querySelector(".popup__form");
   new FormValidator(validationConfig, formElement);
-
   popup.open();
   sectionBody.classList.add("fix");
 }
@@ -102,29 +98,30 @@ const defaultCardList = new Section(
 
 defaultCardList.renderItems();
 
-function formSubmitHandler(formValues, action) {
-  if (action === "edit") {
-    userInfo.setUserInfo({ name: nameProfession.value, job: profesion.value });
-  } else if (action === "add") {
-    const newCard = new Card(
-      formValues["input input-nameadd"],
-      formValues["input input-job"],
-      "#template__card",
-      imagePopup.open
-    ).createCardElement();
-    defaultCardList.setItem(newCard);
-    console.log(formValues);
-  }
-  const popup = new Popup(".popup");
+function formSubmitHandler(formValues) {
+  userInfo.setUserInfo({
+    name: formValues["input input-name"],
+    job: formValues["input input-job"],
+  });
+  console.log(formValues);
   popup.close();
   sectionBody.classList.remove("fix");
 }
-const popupWithFormEdit = new PopupWithForm(".popup__edit", (formValues) =>
-  formSubmitHandler(formValues, "edit")
-);
-const popupWithFormAdd = new PopupWithForm("#popup__add", (formValues) =>
-  formSubmitHandler(formValues, "add")
-);
+const popupWithFormEdit = new PopupWithForm(".popup__edit", formSubmitHandler);
+
+function formSubmitHandlerAdd(formValues) {
+  const newCard = new Card(
+    formValues["input input-nameadd"],
+    formValues["input input-job"],
+    "#template__card",
+    imagePopup.open
+  ).createCardElement();
+  defaultCardList.setItem(newCard);
+  popup.close();
+  sectionBody.classList.remove("fix");
+}
+
+const popupWithFormAdd = new PopupWithForm("#popup__add", formSubmitHandlerAdd);
 
 popupWithFormEdit.setEventListeners();
 popupWithFormAdd.setEventListeners();
