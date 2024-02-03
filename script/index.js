@@ -5,12 +5,16 @@ import PopupWithImage from "./PopupWithImage.js";
 import Section from "./Section.js";
 import UserInfo from "./UserInfo.js";
 import PopupWithForm from "./PopupWithForm.js";
-import { cardsContent, formValidaProfile, formValidaPlace } from "./const.js";
+import {
+  cardsContent,
+  formValidaProfile,
+  formValidaPlace,
+  buttonAdd,
+  nameProfession,
+  profesion,
+  buttonEdit,
+} from "./const.js";
 
-export const buttonAdd = document.querySelector(".profile__button-add");
-export const nameProfession = document.querySelector(".popup__input-name");
-export const profesion = document.querySelector(".popup__input-profesion");
-export const buttonEdit = document.querySelector(".profile__button-edit");
 const imagePopup = new PopupWithImage(".popup_image");
 const popupWithFormAdd = new PopupWithForm(".popup__add", formSubmitHandlerAdd);
 const popupWithFormEdit = new PopupWithForm(".popup__edit", formSubmitHandler);
@@ -21,7 +25,7 @@ const userInfo = new UserInfo({
 
 function popupButtonAdd(event) {
   event.preventDefault();
-  popupWithFormAdd.open(); //add
+  popupWithFormAdd.open();
 }
 
 function openProfile() {
