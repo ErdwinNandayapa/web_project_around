@@ -66,6 +66,6 @@ Para iniciar el servidor de desarrollo, ejecuta:
 
 ## 🔗 Links
 
-Da click [ aquí ](https://erdwinnandayapa.github.io/web_project_around//) para visualizar el Sitio web.
+Da click [ aquí ](https://web-project-around-three.vercel.app/) para visualizar el Sitio web.
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/erdwin-nandayapa-307251103/)
