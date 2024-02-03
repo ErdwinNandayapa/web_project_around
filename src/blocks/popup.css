@@ -192,6 +192,8 @@
 .popup__fieldset {
   border-block: unset;
   border: none;
+  padding-right: 50px;
+  padding-left: 34px;
 }
 
 .popup__content {
