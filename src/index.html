@@ -6,17 +6,19 @@
     <meta name="author" content="Erdwin Nandayapa Cordero" />
     <meta name="description" content="Project around" />
     <meta name="keywords" content="Around" />
-    <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="stylesheet" href="../pages/index.css" />
     <link rel="shortcut icon" href="favicon.ico" />
     <title>Project around</title>
   </head>
   <body class="body">
     <header class="header">
-      <img class="header__logo" src="./images/logo.svg" alt="Around" />
+      <img class="header__logo" src="<%=require("./images/logo.svg")%>"
+      alt="Around" />
     </header>
     <main class="container">
       <section class="profile">
-        <img class="profile__avatar" src="./images/jacques.jpg" alt="Around" />
+        <img class="profile__avatar" src="<%=require("./images/jacques.jpg")%>"
+        alt="Around" />
         <div class="profile__edit">
           <div class="profile__container">
             <h1 class="profile__name">Jacques Cousteau</h1>
@@ -39,7 +41,7 @@
       >
     </footer>
     <!-- -------- Popup ----------- -->
-    <div class="popup">
+    <div class="popup popup__edit" id="popup__edit">
       <div class="popup__content popup__edit">
         <div class="popup__container">
           <button class="button popup__button-typeclose"></button>
@@ -48,7 +50,7 @@
             <fieldset class="popup__fieldset">
               <input
                 type="text"
-                name="input input-name"
+                name="input-name"
                 id="input-name"
                 required
                 minlength="2"
@@ -59,7 +61,7 @@
               <p class="popup__input-span" id="input-name-error"></p>
               <input
                 type="text"
-                name="input input-job"
+                name="input-job"
                 id="input-job"
                 class="popup__input popup__input-profesion"
                 placeholder="Profession"
@@ -80,7 +82,7 @@
       </div>
     </div>
     <!-- Popup form add image -->
-    <div class="popup" id="popup__add">
+    <div class="popup popup__add" id="popup__add">
       <div class="popup__content popup__content-add">
         <div class="popup__container">
           <button
@@ -91,7 +93,7 @@
             <fieldset class="popup__fieldset">
               <input
                 type="text"
-                name="input input-nameadd"
+                name="input-nameadd"
                 id="input-nameimg"
                 required
                 minlength="2"
@@ -102,7 +104,7 @@
               <p class="popup__input-span" id="input-nameimg-error"></p>
               <input
                 type="url"
-                name="input input-job"
+                name="input-url"
                 id="input-jobimg"
                 class="popup__input popup__input-profesion popup__input-linkadd"
                 placeholder="Image link"
@@ -134,13 +136,13 @@
       </div>
     </template>
     <!------------- PopUp Image ---------->
-    <div class="popup popup_image">
+    <div class="popup popup_image" id="popup_image">
       <div class="popup__content-image">
         <button class="button button button_close"></button>
         <img src="." alt="" class="popup__element popup__image" />
         <span class="popup__title popup__title_img"></span>
       </div>
     </div>
-    <script type="module" src="./script/index.js"></script>
+    <script type="module" src="./index.js"></script>
   </body>
 </html>
