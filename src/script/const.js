@@ -37,11 +37,11 @@ export const profesion = document.querySelector(".popup__input-profesion");
 export const buttonEdit = document.querySelector(".profile__button-edit");
 export const imagePopup = new PopupWithImage(".popup_image");
 export const popupWithFormAdd = new PopupWithForm(
-  ".popup__add",
+  "#popup__add",
   formSubmitHandlerAdd
 );
 export const popupWithFormEdit = new PopupWithForm(
-  ".popup__edit",
+  "#popup__edit",
   formSubmitHandler
 );
 
