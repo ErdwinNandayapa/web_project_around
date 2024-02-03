@@ -1,5 +1,3 @@
-# Tripleten web_project_around
-
 # Web Project Around
 
 Este proyecto es una aplicación web configurada con Webpack y Babel para soportar la última sintaxis de JavaScript.
@@ -8,7 +6,7 @@ Este proyecto es una aplicación web configurada con Webpack y Babel para soport
 
 Around The U.S. es una página web que muestra el perfil de un explorador llamado Jacques Cousteau. La página también muestra una lista de tarjetas con imágenes y títulos de lugares interesantes.
 
-![nombreDeLaFoto](https://i.imgur.com/LaJAuUn.gif)
+![nombreDeLaFoto](https://i.imgur.com/CIWtZaP.gif)
 
 ## Tecnologias utilizadas
 
