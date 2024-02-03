@@ -6,17 +6,19 @@
     <meta name="author" content="Erdwin Nandayapa Cordero" />
     <meta name="description" content="Project around" />
     <meta name="keywords" content="Around" />
-    <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="stylesheet" href="../pages/index.css" />
     <link rel="shortcut icon" href="favicon.ico" />
     <title>Project around</title>
   </head>
   <body class="body">
     <header class="header">
-      <img class="header__logo" src="./images/logo.svg" alt="Around" />
+      <img class="header__logo" src="<%=require("./images/logo.svg")%>"
+      alt="Around" />
     </header>
     <main class="container">
       <section class="profile">
-        <img class="profile__avatar" src="./images/jacques.jpg" alt="Around" />
+        <img class="profile__avatar" src="<%=require("./images/jacques.jpg")%>"
+        alt="Around" />
         <div class="profile__edit">
           <div class="profile__container">
             <h1 class="profile__name">Jacques Cousteau</h1>
@@ -141,6 +143,6 @@
         <span class="popup__title popup__title_img"></span>
       </div>
     </div>
-    <script type="module" src="./script/index.js"></script>
+    <script type="module" src="./index.js"></script>
   </body>
 </html>
