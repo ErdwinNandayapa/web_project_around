@@ -1,10 +1,7 @@
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 import { validationConfig } from "./utils.js";
-import PopupWithImage from "./PopupWithImage.js";
 import Section from "./Section.js";
-import UserInfo from "./UserInfo.js";
-import PopupWithForm from "./PopupWithForm.js";
 import {
   cardsContent,
   formValidaProfile,
@@ -13,15 +10,11 @@ import {
   nameProfession,
   profesion,
   buttonEdit,
+  imagePopup,
+  popupWithFormAdd,
+  popupWithFormEdit,
+  userInfo,
 } from "./const.js";
-
-const imagePopup = new PopupWithImage(".popup_image");
-const popupWithFormAdd = new PopupWithForm(".popup__add", formSubmitHandlerAdd);
-const popupWithFormEdit = new PopupWithForm(".popup__edit", formSubmitHandler);
-const userInfo = new UserInfo({
-  nameSelector: ".profile__name",
-  jobSelector: ".profile__profession",
-});
 
 function popupButtonAdd(event) {
   event.preventDefault();
@@ -36,7 +29,7 @@ function openProfile() {
   popupWithFormEdit.open();
 }
 
-function formSubmitHandler(formValues) {
+export function formSubmitHandler(formValues) {
   userInfo.setUserInfo({
     name: formValues["input-name"],
     job: formValues["input-job"],
@@ -45,7 +38,7 @@ function formSubmitHandler(formValues) {
   popupWithFormEdit.close();
 }
 
-function formSubmitHandlerAdd(formValues) {
+export function formSubmitHandlerAdd(formValues) {
   const newCard = new Card(
     formValues["input-nameadd"],
     formValues["input-url"],

@@ -1,3 +1,7 @@
+import PopupWithImage from "./PopupWithImage.js";
+import PopupWithForm from "./PopupWithForm.js";
+import { formSubmitHandler, formSubmitHandlerAdd } from "./index.js";
+import UserInfo from "./UserInfo.js";
 export const cardsContent = [
   {
     name: "Valle de Yosemite",
@@ -31,3 +35,17 @@ export const buttonAdd = document.querySelector(".profile__button-add");
 export const nameProfession = document.querySelector(".popup__input-name");
 export const profesion = document.querySelector(".popup__input-profesion");
 export const buttonEdit = document.querySelector(".profile__button-edit");
+export const imagePopup = new PopupWithImage(".popup_image");
+export const popupWithFormAdd = new PopupWithForm(
+  ".popup__add",
+  formSubmitHandlerAdd
+);
+export const popupWithFormEdit = new PopupWithForm(
+  ".popup__edit",
+  formSubmitHandler
+);
+
+export const userInfo = new UserInfo({
+  nameSelector: ".profile__name",
+  jobSelector: ".profile__profession",
+});
