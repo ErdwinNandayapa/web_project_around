@@ -48,9 +48,10 @@ export function formSubmitHandlerAdd(formValues) {
   defaultCardList.setItem(newCard);
   popupWithFormEdit.close();
 }
+
 buttonAdd.addEventListener("click", popupButtonAdd);
 buttonEdit.addEventListener("click", openProfile);
-// Inicialización
+
 const defaultCardList = new Section(
   {
     data: cardsContent,
