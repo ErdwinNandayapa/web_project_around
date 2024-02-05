@@ -220,7 +220,7 @@
 .popup__input_type {
   position: absolute;
   top: 147px;
-  left: 15px;
+  left: 35px;
   color: #f00;
   font-family: Inter;
   font-size: 12px;
@@ -232,7 +232,7 @@
 .popup__input-span {
   position: absolute;
   top: 147px;
-  left: 15px;
+  left: 35px;
   color: #f00;
   font-family: Inter;
   font-size: 12px;
@@ -245,7 +245,7 @@
 .popup__error-profesion {
   position: absolute;
   top: 205px;
-  left: 15px;
+  left: 35px;
   color: #f00;
   font-family: Inter;
   font-size: 12px;
