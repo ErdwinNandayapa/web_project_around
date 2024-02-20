@@ -4,7 +4,7 @@ class Api {
     this.headers = headers;
   }
 
-  getCards() {
+  getInitialCards() {
     return fetch(`${this.baseUrl}/cards`, { headers: this.headers })
       .then((res) => {
         if (!res.ok) throw new Error(`Server error: ${res.status}`);
@@ -38,7 +38,7 @@ class Api {
       .catch((error) => console.error("Error:", error));
   }
 
-  getInitialCards(name, link) {
+  getNewCards(name, link) {
     return fetch(`${this.baseUrl}/cards`, {
       method: "POST",
       headers: {
