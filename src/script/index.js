@@ -17,6 +17,20 @@ import {
   userInfo,
 } from "./const.js";
 
+import { api } from "./Api.js";
+
+// Use the api object to make requests
+api.getCards().then((cards) => {
+  cards.forEach((card) => {
+    const { name, link } = card;
+    console.log(name, link);
+  });
+});
+// api.getUserInfo().then((userInfo) => console.log(userInfo));
+// api
+//   .updateUserInfo("Marie Skłodowska Curie", "Físico y químicos")
+//   .then((updatedUserInfo) => console.log(updatedUserInfo));
+
 function popupButtonAdd(event) {
   event.preventDefault();
   popupWithFormAdd.open();
@@ -35,7 +49,6 @@ export function formSubmitHandler(formValues) {
     name: formValues["input-name"],
     job: formValues["input-job"],
   });
-  console.log(formValues);
   popupWithFormEdit.close();
 }
 
@@ -53,23 +66,29 @@ export function formSubmitHandlerAdd(formValues) {
 buttonAdd.addEventListener("click", popupButtonAdd);
 buttonEdit.addEventListener("click", openProfile);
 
-const defaultCardList = new Section(
-  {
-    data: cardsContent,
-    renderer: (item) => {
-      const card = new Card(
-        item.name,
-        item.link,
-        "#template__card",
-        imagePopup.open
-      );
-      const cardElement = card.createCardElement();
-      defaultCardList.setItem(cardElement);
+api.getCards().then((cards) => {
+  const defaultCardList = new Section(
+    {
+      data: cards, //  obtenidos de la API
+      renderer: (item) => {
+        const card = new Card(
+          item.name,
+          item.link,
+          "#template__card",
+          imagePopup.open
+        );
+        const cardElement = card.createCardElement();
+        defaultCardList.setItem(cardElement);
+      },
     },
-  },
-  ".cards"
-);
+    ".cards"
+  );
+
+  defaultCardList.renderItems();
+  popupWithFormEdit.setEventListeners();
+  popupWithFormAdd.setEventListeners();
+});
 new FormValidator(validationConfig, formValidaPlace);
-defaultCardList.renderItems();
-popupWithFormEdit.setEventListeners();
-popupWithFormAdd.setEventListeners();
+// defaultCardList.renderItems();
+// popupWithFormEdit.setEventListeners();
+// popupWithFormAdd.setEventListeners();
