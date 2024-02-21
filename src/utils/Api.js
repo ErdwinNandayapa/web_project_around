@@ -70,6 +70,8 @@ export const api = new Api("https://around.nomoreparties.co/v1/web_es_08/", {
   authorization: "cebd400e-cb13-478f-a576-1969697c9570",
 });
 
+api.getInitialCards().then((cards) => console.log(cards));
+
 // Use the api object to make requests
 // api.getCards().then((cards) => console.log(cards));
 // api.getUserInfo().then((userInfo) => console.log(userInfo));

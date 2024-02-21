@@ -1,11 +1,13 @@
 import { closeButtonCards, buttonLike } from "./utils.js";
 
 export default class Card {
-  constructor(name, link, selector, handleCardClick) {
+  constructor(name, link, id, likes, selector, handleCardClick) {
     this.name = name;
     this.link = link;
     this.selector = selector;
     this._handleCardClick = handleCardClick;
+    this.id = id;
+    this.likes = likes;
   }
 
   _eventListener(clone) {

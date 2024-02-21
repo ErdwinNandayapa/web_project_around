@@ -4,7 +4,6 @@ import FormValidator from "./FormValidator.js";
 import { validationConfig } from "./utils.js";
 import Section from "./Section.js";
 import {
-  cardsContent,
   formValidaProfile,
   formValidaPlace,
   buttonAdd,
@@ -15,14 +14,14 @@ import {
   popupWithFormAdd,
   popupWithFormEdit,
   userInfo,
+  profileName,
+  profileAbout,
+  buttonSubmitCard,
+  popupSubmitProfile,
 } from "./const.js";
 
-import { api } from "./Api.js";
 let defaultCardList;
-const profileName = document.querySelector(".profile__name");
-const profileAbout = document.querySelector(".profile__profession");
-const buttonSubmitCard = document.querySelector("#submit__add");
-const popupSubmitProfile = document.querySelector("#popup__profile");
+import { api } from "../utils/Api.js";
 
 function popupButtonAdd(event) {
   event.preventDefault();
@@ -102,6 +101,8 @@ api.getInitialCards().then((cards) => {
         const card = new Card(
           item.name,
           item.link,
+          item._id,
+          item.likes,
           "#template__card",
           imagePopup.open
         );

@@ -1,11 +1,17 @@
 export function closeButtonCards(event) {
-  const card = event.target.parentElement.parentElement;
+  // const card = event.target.parentElement.parentElement;
+  // if (card) {
+  //   card.classList.add("popup-closeTransition");
+  //   card.addEventListener("animationend", () => {
+  //     card.classList.remove("popup-closeTransition");
+  //     card.remove();
+  //   });
+  // }
+  const card = event.target.closest(".card");
   if (card) {
-    card.classList.add("popup-closeTransition");
-    card.addEventListener("animationend", () => {
-      card.classList.remove("popup-closeTransition");
-      card.remove();
-    });
+    // Verifica que card exista
+    const cardId = card.getAttribute("data-card-id");
+    console.log(cardId);
   }
 }
 
