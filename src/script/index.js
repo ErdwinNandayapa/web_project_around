@@ -75,6 +75,8 @@ export function formSubmitHandlerAdd(formValues) {
       const newCard = new Card(
         newCardData.name,
         newCardData.link,
+        newCardData._id,
+        newCardData.likes,
         "#template__card",
         imagePopup.open
       ).createCardElement();

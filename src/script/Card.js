@@ -30,10 +30,12 @@ export default class Card {
     if (!confirm("Are you sure?")) return;
     const deleteButton = document.querySelector(".button__delete");
     const cardElement = deleteButton.closest(".card");
+    const cardPrueba = this.clone.querySelector(".card");
+    console.log(cardPrueba);
+
     api
       .deleteCard(this.id)
       .then(() => {
-        console.log(cardElement);
         cardElement.remove();
       })
       .catch((error) => console.error("Error al eliminar la tarjeta:", error));
