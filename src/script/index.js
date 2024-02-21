@@ -19,26 +19,49 @@ import {
 
 import { api } from "./Api.js";
 let defaultCardList;
+const profileName = document.querySelector(".profile__name");
+const profileAbout = document.querySelector(".profile__profession");
+const buttonSubmitCard = document.querySelector("#submit__add");
+const popupSubmitProfile = document.querySelector("#popup__profile");
 
 function popupButtonAdd(event) {
   event.preventDefault();
   popupWithFormAdd.open();
 }
 
+api.getUserInfo().then((userData) => {
+  console.log(userData.name);
+  profileName.textContent = userData.name;
+  profileAbout.textContent = userData.about;
+});
+
 function openProfile() {
+  popupSubmitProfile.textContent = "Guardando...";
   api.getUserInfo().then((userData) => {
     nameProfession.value = userData.name;
     profesion.value = userData.about;
     new FormValidator(validationConfig, formValidaProfile);
     popupWithFormEdit.open();
+    popupSubmitProfile.textContent = "Guardar";
   });
 }
 
 export function formSubmitHandler(formValues) {
-  userInfo.setUserInfo({
-    name: formValues["input-name"],
-    job: formValues["input-job"],
-  });
+  const name = formValues["input-name"];
+  const about = formValues["input-job"];
+
+  api
+    .updateUserInfo(name, about)
+    .then((userData) => {
+      userInfo.setUserInfo({
+        name: userData.name,
+        job: userData.about,
+      });
+    })
+    .catch((error) => {
+      console.error("Error al actualizar el perfil:", error);
+    });
+
   popupWithFormEdit.close();
 }
 
@@ -46,11 +69,11 @@ export function formSubmitHandlerAdd(formValues) {
   const name = formValues["input-nameadd"];
   const link = formValues["input-url"];
 
-  // Llamar a getInitialCards de la API para crear la nueva carta
+  buttonSubmitCard.textContent = "Guardando...";
+
   api
     .getNewCards(name, link)
     .then((newCardData) => {
-      // Crear la carta en el cliente con los datos devueltos por la API
       const newCard = new Card(
         newCardData.name,
         newCardData.link,
@@ -58,11 +81,10 @@ export function formSubmitHandlerAdd(formValues) {
         imagePopup.open
       ).createCardElement();
 
-      // Agregar la nueva carta a la lista de cartas
       defaultCardList.setItem(newCard);
 
-      // Cerrar el popup de formulario
       popupWithFormEdit.close();
+      buttonSubmitCard.textContent = "Create";
     })
     .catch((error) => {
       console.error("Error al crear la carta:", error);

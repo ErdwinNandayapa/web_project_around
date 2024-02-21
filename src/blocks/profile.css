@@ -108,6 +108,7 @@
   .profile__name {
     font-size: 28px;
     line-height: 28px;
+    max-width: 248px;
   }
   .profile__edit {
     flex-basis: 46%;
