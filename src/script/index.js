@@ -29,7 +29,6 @@ function popupButtonAdd(event) {
 }
 
 api.getUserInfo().then((userData) => {
-  console.log(userData.name);
   profileName.textContent = userData.name;
   profileAbout.textContent = userData.about;
 });

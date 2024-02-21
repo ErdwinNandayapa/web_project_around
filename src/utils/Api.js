@@ -64,6 +64,18 @@ class Api {
       })
       .catch((error) => console.error("Error:", error));
   }
+  likeCard(id, isLiked) {
+    const method = isLiked ? "DELETE" : "PUT"; // Determina el método basado en si ya se ha dado "me gusta" o no
+    return fetch(`${this.baseUrl}/cards/likes/${id}`, {
+      method: method,
+      headers: this.headers,
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error(`Server error: ${res.status}`);
+        return res.json(); // La respuesta incluirá el estado actualizado de "me gusta", incluyendo el conteo
+      })
+      .catch((error) => console.error("Error:", error));
+  }
 }
 
 export const api = new Api("https://around.nomoreparties.co/v1/web_es_08/", {
