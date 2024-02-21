@@ -47,7 +47,7 @@ export default class Card {
       .likeCard(this.id, isLiked)
       .then((data) => {
         this.likeButton.classList.toggle("button__like-active", !isLiked);
-        this.likeButton.classList.toggle("button__like", isLiked);
+        this.likeButton.classList.toggle("button__like", !isLiked);
         this.likeCountElement.textContent = data.likes.length;
       })
       .catch((error) =>
