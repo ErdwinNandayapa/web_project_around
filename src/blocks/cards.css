@@ -9,8 +9,17 @@
   display: flex;
   justify-content: space-between;
   text-align: center;
-  padding: 1rem 1rem;
+  margin: 8px 15px 0 9px;
   align-items: center;
+}
+.card__likes {
+  color: #000;
+}
+
+.card__container-likes {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 22px;
 }
 
 .card {
