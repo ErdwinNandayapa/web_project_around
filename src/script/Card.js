@@ -14,7 +14,7 @@ export default class Card {
   _eventListener(clone) {
     this.clone
       .querySelector(".button__type-like")
-      .addEventListener("click", buttonLike);
+      .addEventListener("click", () => this._likeCard());
 
     this.clone
       .querySelector(".button__delete")
@@ -42,12 +42,13 @@ export default class Card {
   }
   //esto esta aprueba y error
   _likeCard() {
-    const isLiked = this.likeButton.classList.contains("button__like-active"); // Asume que `likeButton` es una referencia al botón de "me gusta" preguntar button__type-like
+    const isLiked = this.likeButton.classList.contains("button__like-active");
     api
       .likeCard(this.id, isLiked)
       .then((data) => {
-        this.likeButton.classList.toggle("button__like-active", !isLiked); // Actualiza la clase basada en la nueva respuesta
-        this.likeCountElement.textContent = data.likes.length; // Asume que `likeCountElement` es una referencia al elemento que muestra el conteo de "me gusta"
+        this.likeButton.classList.toggle("button__like-active", !isLiked);
+        this.likeButton.classList.toggle("button__like", isLiked);
+        this.likeCountElement.textContent = data.likes.length;
       })
       .catch((error) =>
         console.error("Error al actualizar el me gusta:", error)
@@ -57,9 +58,12 @@ export default class Card {
   createCardElement() {
     this.card = document.querySelector(this.selector);
     this.clone = this.card.content.cloneNode(true);
+    this.likeButton = this.clone.querySelector(".button__type-like");
+    this.likeCountElement = this.clone.querySelector(".card__likes");
     this._setAttributes();
     this._setTextContent();
     this._eventListener();
+    this._setLikes();
     return this.clone;
   }
   _setAttributes() {
@@ -69,5 +73,11 @@ export default class Card {
   }
   _setTextContent() {
     this.clone.querySelector(".card__text").textContent = this.name;
+  }
+  _setLikes() {
+    this.likeCountElement.textContent = this.likes.length;
+    if (this.likes.length > 0) {
+      this.likeButton.classList.toggle("button__like", true);
+    }
   }
 }
