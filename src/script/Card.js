@@ -75,6 +75,7 @@ export default class Card {
     this.likeCountElement.textContent = this.likes.length;
     if (this.likes.length > 0) {
       this.likeButton.classList.toggle("button__like", true);
+      this.likeButton.classList.add("button__like-active", true);
     }
   }
 }
