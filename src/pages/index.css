@@ -29,3 +29,16 @@
 .profile__overlay {
   position: relative;
 }
+
+.popup__containerAvatar {
+  padding: 4rem;
+}
+.popup__fieldsetA {
+  border-block: unset;
+  border: none;
+  padding-left: 0px;
+  padding-right: 76px;
+}
+.popup__input-avatar {
+  width: 133%;
+}

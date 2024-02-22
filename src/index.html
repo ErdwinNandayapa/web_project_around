@@ -148,5 +148,78 @@
         <span class="popup__title popup__title_img"></span>
       </div>
     </div>
+
+    <div class="popup" id="popup__edit">
+      <div class="popup__content popup__edit">
+        <div class="popup__container">
+          <button class="button popup__button-typeclose"></button>
+          <span class="popup__title">Edit profile</span>
+          <form class="popup__form">
+            <fieldset class="popup__fieldset">
+              <input
+                type="text"
+                name="input-name"
+                id="input-name"
+                required
+                minlength="2"
+                maxlength="40"
+                class="popup__input popup__input-name"
+                placeholder="Name"
+              />
+              <p class="popup__input-span" id="input-name-error"></p>
+              <input
+                type="text"
+                name="input-job"
+                id="input-job"
+                class="popup__input popup__input-profesion"
+                placeholder="Profession"
+                required
+                minlength="2"
+                maxlength="200"
+              />
+              <p class="popup__error-profesion" id="input-job-error"></p>
+            </fieldset>
+            <button
+              class="button popup__button-typesave popup__button"
+              id="popup__profile"
+            >
+              Save
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- cambiar foto perfil -->
+
+    <div class="popup" id="popup__avatar">
+      <div class="popup__content popup__content-add">
+        <div class="popup__containerAvatar">
+          <button
+            class="button popup__button-typeclose popup__button-typecloseadd"
+          ></button>
+          <span class="popup__title">Cambiar foto de perfil</span>
+          <form class="popup__form popup__form-avatar">
+            <fieldset class="popup__fieldset popup__fieldsetA">
+              <input
+                type="url"
+                name="input-url"
+                id="input-jobimg"
+                class="popup__input popup__input-profesion popup__input-linkadd popup__input-avatar"
+                placeholder="Image link"
+                required
+              />
+              <p class="popup__error-profesion" id="input-jobimg-error"></p>
+            </fieldset>
+            <button
+              class="button popup__button popup__button-typesave"
+              id="submit__add"
+            >
+              Create
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
