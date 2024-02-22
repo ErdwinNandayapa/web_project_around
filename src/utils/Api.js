@@ -76,6 +76,21 @@ class Api {
       })
       .catch((error) => console.error("Error:", error));
   }
+  updateAvatar(link) {
+    return fetch(`${this.baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: {
+        ...this.headers,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ avatar: link }),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error(`Server error: ${res.status}`);
+        return res.json();
+      })
+      .catch((error) => console.error("Error:", error));
+  }
 }
 
 export const api = new Api("https://around.nomoreparties.co/v1/web_es_08/", {

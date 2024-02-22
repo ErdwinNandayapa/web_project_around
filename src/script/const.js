@@ -40,7 +40,7 @@ export const nameProfession = document.querySelector(".popup__input-name");
 export const profesion = document.querySelector(".popup__input-profesion");
 export const buttonEdit = document.querySelector(".profile__button-edit");
 export const imagePopup = new PopupWithImage(".popup_image");
-
+export const avatar = document.querySelector(".profile__avatar");
 export const profileName = document.querySelector(".profile__name");
 export const profileAbout = document.querySelector(".profile__profession");
 export const buttonSubmitCard = document.querySelector("#submit__add");

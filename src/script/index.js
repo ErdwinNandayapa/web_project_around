@@ -20,9 +20,11 @@ import {
   popupSubmitProfile,
   popupWithFormAvatar,
   headerAvatar,
+  avatar,
 } from "./const.js";
 
 let defaultCardList;
+
 import { api } from "../utils/Api.js";
 
 function popupButtonAdd(event) {
@@ -33,6 +35,7 @@ function popupButtonAdd(event) {
 api.getUserInfo().then((userData) => {
   profileName.textContent = userData.name;
   profileAbout.textContent = userData.about;
+  avatar.src = userData.avatar;
 });
 
 function openProfile() {
@@ -47,7 +50,20 @@ function openProfileAvatar() {
   popupWithFormAvatar.open();
 }
 
-export function formSubmitHandlerAvatar(formValues) {}
+export function formSubmitHandlerAvatar(formValues) {
+  const link = formValues["input-url"];
+  buttonSubmitCard.textContent = "Guardando...";
+  api
+    .updateAvatar(link)
+    .then((userData) => {
+      avatar.src = userData.avatar;
+      popupWithFormAvatar.close();
+      buttonSubmitCard.textContent = "Save";
+    })
+    .catch((error) => {
+      console.error("Error al actualizar el avatar:", error);
+    });
+}
 
 export function formSubmitHandler(formValues) {
   const name = formValues["input-name"];

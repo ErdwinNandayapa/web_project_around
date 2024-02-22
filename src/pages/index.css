@@ -19,9 +19,9 @@
   height: 45px;
   width: 54px;
   position: absolute;
-  top: 34px;
-  left: 37px;
   border: 0;
+  left: 42px;
+  top: 25px;
 }
 .header__button:hover {
   animation: rotate 1.5s linear infinite;
