@@ -99,11 +99,12 @@ api.getInitialCards().then((cards) => {
     {
       data: cards, //  obtenidos de la API
       renderer: (item) => {
+        const { name, link, _id, likes } = item;
         const card = new Card(
-          item.name,
-          item.link,
-          item._id,
-          item.likes,
+          name,
+          link,
+          _id,
+          likes,
           "#template__card",
           imagePopup.open
         );
