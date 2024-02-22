@@ -36,23 +36,23 @@ api.getUserInfo().then((userData) => {
 });
 
 function openProfile() {
-  popupSubmitProfile.textContent = "Guardando...";
   api.getUserInfo().then((userData) => {
     nameProfession.value = userData.name;
     profesion.value = userData.about;
     new FormValidator(validationConfig, formValidaProfile);
     popupWithFormEdit.open();
-    popupSubmitProfile.textContent = "Guardar";
   });
 }
 function openProfileAvatar() {
   popupWithFormAvatar.open();
 }
 
+export function formSubmitHandlerAvatar(formValues) {}
+
 export function formSubmitHandler(formValues) {
   const name = formValues["input-name"];
   const about = formValues["input-job"];
-
+  popupSubmitProfile.textContent = "Guardando...";
   api
     .updateUserInfo(name, about)
     .then((userData) => {
@@ -60,6 +60,7 @@ export function formSubmitHandler(formValues) {
         name: userData.name,
         job: userData.about,
       });
+      popupSubmitProfile.textContent = "Guardar";
     })
     .catch((error) => {
       console.error("Error al actualizar el perfil:", error);

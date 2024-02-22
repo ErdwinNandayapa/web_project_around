@@ -1,6 +1,10 @@
 import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
-import { formSubmitHandler, formSubmitHandlerAdd } from "./index.js";
+import {
+  formSubmitHandler,
+  formSubmitHandlerAdd,
+  formSubmitHandlerAvatar,
+} from "./index.js";
 import UserInfo from "./UserInfo.js";
 export const cardsContent = [
   {
@@ -52,7 +56,7 @@ export const popupWithFormEdit = new PopupWithForm(
 );
 export const popupWithFormAvatar = new PopupWithForm(
   "#popup__avatar",
-  formSubmitHandler
+  formSubmitHandlerAvatar
 );
 export const userInfo = new UserInfo({
   nameSelector: ".profile__name",
