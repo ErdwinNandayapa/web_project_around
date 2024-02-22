@@ -42,3 +42,33 @@
 .popup__input-avatar {
   width: 133%;
 }
+
+.popup__content-conf {
+  height: 131px;
+}
+.popup__containerConf {
+  padding: 0px;
+}
+.popup__form-conf {
+  margin: 0.5px;
+}
+.popup__titleConf {
+  color: #000;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 44px;
+  margin-bottom: 24px;
+  margin-left: 127px;
+  text-align: left;
+  width: 85%;
+}
+
+.popup__confirm-button {
+  margin-top: 11px;
+  background: #000;
+  border-radius: 2px;
+  color: #fff;
+  cursor: pointer;
+  height: 50.152px;
+  width: 358px;
+}
