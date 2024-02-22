@@ -92,6 +92,7 @@ export function formSubmitHandlerAdd(formValues) {
 
       popupWithFormEdit.close();
       buttonSubmitCard.textContent = "Create";
+      popupWithFormAdd.close();
     })
     .catch((error) => {
       console.error("Error al crear la carta:", error);
