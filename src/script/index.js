@@ -72,11 +72,12 @@ export function formSubmitHandlerAdd(formValues) {
   api
     .getNewCards(name, link)
     .then((newCardData) => {
+      const { name, link, _id, likes } = newCardData;
       const newCard = new Card(
-        newCardData.name,
-        newCardData.link,
-        newCardData._id,
-        newCardData.likes,
+        name,
+        link,
+        _id,
+        likes,
         "#template__card",
         imagePopup.open
       ).createCardElement();
