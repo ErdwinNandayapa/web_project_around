@@ -23,12 +23,11 @@ export default class Card {
     this.clone.querySelector(".images__card").addEventListener("click", () => {
       this._handleCardClick(this.name, this.link);
     });
-
     return clone;
   }
   _deleteCard(element) {
     if (!confirm("Are you sure?")) return;
-    const deleteButton = document.querySelector(".button__delete");
+
     const cardElement = element.target.closest(".card");
 
     api
