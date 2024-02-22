@@ -18,6 +18,8 @@ import {
   profileAbout,
   buttonSubmitCard,
   popupSubmitProfile,
+  popupWithFormAvatar,
+  headerAvatar,
 } from "./const.js";
 
 let defaultCardList;
@@ -42,6 +44,9 @@ function openProfile() {
     popupWithFormEdit.open();
     popupSubmitProfile.textContent = "Guardar";
   });
+}
+function openProfileAvatar() {
+  popupWithFormAvatar.open();
 }
 
 export function formSubmitHandler(formValues) {
@@ -94,6 +99,7 @@ export function formSubmitHandlerAdd(formValues) {
 
 buttonAdd.addEventListener("click", popupButtonAdd);
 buttonEdit.addEventListener("click", openProfile);
+headerAvatar.addEventListener("click", openProfileAvatar);
 
 api.getInitialCards().then((cards) => {
   defaultCardList = new Section(

@@ -41,6 +41,7 @@ export const profileName = document.querySelector(".profile__name");
 export const profileAbout = document.querySelector(".profile__profession");
 export const buttonSubmitCard = document.querySelector("#submit__add");
 export const popupSubmitProfile = document.querySelector("#popup__profile");
+export const headerAvatar = document.querySelector(".header__button");
 export const popupWithFormAdd = new PopupWithForm(
   "#popup__add",
   formSubmitHandlerAdd
@@ -49,7 +50,10 @@ export const popupWithFormEdit = new PopupWithForm(
   "#popup__edit",
   formSubmitHandler
 );
-
+export const popupWithFormAvatar = new PopupWithForm(
+  "#popup__avatar",
+  formSubmitHandler
+);
 export const userInfo = new UserInfo({
   nameSelector: ".profile__name",
   jobSelector: ".profile__profession",
