@@ -1,5 +1,6 @@
 import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
+import PopupWithConfirmation from "./PopupWithConfirmation.js";
 import {
   formSubmitHandler,
   formSubmitHandlerAdd,
@@ -63,3 +64,6 @@ export const userInfo = new UserInfo({
   nameSelector: ".profile__name",
   jobSelector: ".profile__profession",
 });
+
+export const popupSelector = "#popup__confirmacion";
+export const miPopupConConfirmacion = new PopupWithConfirmation(popupSelector);

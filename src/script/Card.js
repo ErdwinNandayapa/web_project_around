@@ -1,7 +1,6 @@
 import { closeButtonCards, buttonLike } from "./utils.js";
 import { api } from "../utils/Api.js";
-import PopupWithConfirmation from "./PopupWithConfirmation.js";
-
+import { miPopupConConfirmacion } from "./const.js";
 export default class Card {
   constructor(name, link, id, likes, selector, handleCardClick) {
     this.name = name;
@@ -30,7 +29,7 @@ export default class Card {
     const confirmDelete = () => {
       const cardElement = element.target.closest(".card");
       const deleteButton = document.querySelector(".popup__confirm-button");
-      deleteButton.textContent = "Guardando...";
+      deleteButton.textContent = "Eliminando...";
       api
         .deleteCard(this.id)
         .then(() => {
@@ -41,12 +40,7 @@ export default class Card {
           console.error("Error al eliminar la tarjeta:", error)
         );
     };
-    const popupSelector = "#popup__confirmacion";
-    const miPopupConConfirmacion = new PopupWithConfirmation(
-      popupSelector,
-      confirmDelete
-    );
-
+    miPopupConConfirmacion.setConfirmAction(confirmDelete);
     miPopupConConfirmacion.open();
   }
 
