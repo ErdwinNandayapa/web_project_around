@@ -21,6 +21,7 @@ import {
   popupWithFormAvatar,
   headerAvatar,
   avatar,
+  popupSubmitAvatar,
 } from "./const.js";
 let defaultCardList;
 
@@ -51,13 +52,13 @@ function openProfileAvatar() {
 
 export function formSubmitHandlerAvatar(formValues) {
   const link = formValues["input-url"];
-  buttonSubmitCard.textContent = "Guardando...";
+  popupSubmitAvatar.textContent = "Guardando...";
   api
     .updateAvatar(link)
     .then((userData) => {
       avatar.src = userData.avatar;
       popupWithFormAvatar.close();
-      buttonSubmitCard.textContent = "Save";
+      popupSubmitAvatar.textContent = "Save";
     })
     .catch((error) => {
       console.error("Error al actualizar el avatar:", error);
