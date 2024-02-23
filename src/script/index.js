@@ -23,18 +23,8 @@ import {
   avatar,
 } from "./const.js";
 let defaultCardList;
-import PopupWithConfirmation from "./PopupWithConfirmation.js";
-import { api } from "../utils/Api.js";
 
-// const popupSelector = "#popup__confirmacion";
-// const confirmHandler = () => {
-//   console.log("Confirmado!");
-// };
-// const miPopupConConfirmacion = new PopupWithConfirmation(
-//   popupSelector,
-//   confirmHandler
-// );
-// miPopupConConfirmacion.open();
+import { api } from "../utils/Api.js";
 
 function popupButtonAdd(event) {
   event.preventDefault();

@@ -1,5 +1,6 @@
 import { closeButtonCards, buttonLike } from "./utils.js";
 import { api } from "../utils/Api.js";
+import PopupWithConfirmation from "./PopupWithConfirmation.js";
 
 export default class Card {
   constructor(name, link, id, likes, selector, handleCardClick) {
@@ -26,18 +27,29 @@ export default class Card {
     return clone;
   }
   _deleteCard(element) {
-    if (!confirm("Are you sure?")) return;
+    const confirmDelete = () => {
+      const cardElement = element.target.closest(".card");
+      const deleteButton = document.querySelector(".popup__confirm-button");
+      deleteButton.textContent = "Guardando...";
+      api
+        .deleteCard(this.id)
+        .then(() => {
+          cardElement.remove();
+          deleteButton.textContent = "Si";
+        })
+        .catch((error) =>
+          console.error("Error al eliminar la tarjeta:", error)
+        );
+    };
+    const popupSelector = "#popup__confirmacion";
+    const miPopupConConfirmacion = new PopupWithConfirmation(
+      popupSelector,
+      confirmDelete
+    );
 
-    const cardElement = element.target.closest(".card");
-
-    api
-      .deleteCard(this.id)
-      .then(() => {
-        cardElement.remove();
-      })
-      .catch((error) => console.error("Error al eliminar la tarjeta:", error));
+    miPopupConConfirmacion.open();
   }
-  //esto esta aprueba y error
+
   _likeCard() {
     const isLiked = this.likeButton.classList.contains("button__like-active");
     api
