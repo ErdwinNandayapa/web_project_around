@@ -131,6 +131,7 @@
 .images__card {
   width: 282px;
   height: 282px;
+  object-fit: fill;
 }
 
 .popup__content-image {
@@ -143,6 +144,7 @@
 .popup__image {
   width: 816px;
   height: 540px;
+  object-fit: fill;
 }
 .popup-close {
   animation: closeWindow 0.6s forwards;
