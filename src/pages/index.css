@@ -8,3 +8,16 @@
 @import url(../blocks/button.css);
 @import url(../blocks/popup.css);
 @import url(../blocks/footer.css);
+
+.popup__error {
+  color: red;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  left: 2px;
+  line-height: normal;
+  max-width: 393px;
+  position: absolute;
+  top: 39px;
+}

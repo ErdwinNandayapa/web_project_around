@@ -22,6 +22,7 @@ import {
   headerAvatar,
   avatar,
   popupSubmitAvatar,
+  formValidaAvatar,
 } from "./const.js";
 let defaultCardList;
 
@@ -47,6 +48,7 @@ function openProfile() {
   });
 }
 function openProfileAvatar() {
+  new FormValidator(validationConfig, formValidaAvatar);
   popupWithFormAvatar.open();
 }
 

@@ -35,6 +35,7 @@ export const cardsContent = [
 ];
 
 export const formValidaProfile = document.querySelector(".popup__form");
+export const formValidaAvatar = document.querySelector("#popup__avatar");
 export const formValidaPlace = document.querySelector(".popup__form-add");
 export const buttonAdd = document.querySelector(".profile__button-add");
 export const nameProfession = document.querySelector(".popup__input-name");
