@@ -16,14 +16,16 @@
     </header>
     <main class="container">
       <section class="profile">
-        <img class="profile__avatar" src="<%=require("./images/jacques.jpg")%>"
-        alt="Around" />
+        <div class="profile__overlay">
+          <img class="profile__avatar" src="." alt="Around" />
+          <button class="header__button"></button>
+        </div>
         <div class="profile__edit">
           <div class="profile__container">
-            <h1 class="profile__name">Jacques Cousteau</h1>
+            <h1 class="profile__name"></h1>
             <button class="profile__button-edit"></button>
           </div>
-          <p class="profile__profession">Explorer</p>
+          <p class="profile__profession"></p>
         </div>
         <button class="profile__button-add"></button>
       </section>
@@ -132,6 +134,9 @@
           <button class="button button__type-like"></button>
           <button class="button button__delete"></button>
         </div>
+        <div class="card__container-likes">
+          <span class="card__likes"></span>
+        </div>
       </div>
     </template>
     <!------------- PopUp Image ---------->
@@ -140,6 +145,98 @@
         <button class="button button button_close"></button>
         <img src="." alt="" class="popup__element popup__image" />
         <span class="popup__title popup__title_img"></span>
+      </div>
+    </div>
+
+    <div class="popup" id="popup__edit">
+      <div class="popup__content popup__edit">
+        <div class="popup__container">
+          <button class="button popup__button-typeclose"></button>
+          <span class="popup__title">Edit profile</span>
+          <form class="popup__form">
+            <fieldset class="popup__fieldset">
+              <input
+                type="text"
+                name="input-name"
+                id="input-name"
+                required
+                minlength="2"
+                maxlength="40"
+                class="popup__input popup__input-name"
+                placeholder="Name"
+              />
+              <p class="popup__input-span" id="input-name-error"></p>
+              <input
+                type="text"
+                name="input-job"
+                id="input-job"
+                class="popup__input popup__input-profesion"
+                placeholder="Profession"
+                required
+                minlength="2"
+                maxlength="200"
+              />
+              <p class="popup__error-profesion" id="input-job-error"></p>
+            </fieldset>
+            <button
+              class="button popup__button-typesave popup__button"
+              id="popup__profile"
+            >
+              Save
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- cambiar foto perfil -->
+
+    <div class="popup" id="popup__avatar">
+      <div class="popup__content popup__content-Conf">
+        <div class="popup__containerAvatar">
+          <button
+            class="button popup__button-typeclose popup__button-typecloseadd"
+          ></button>
+          <span class="popup__title">Cambiar foto de perfil</span>
+          <form class="popup__form popup__form-avatar">
+            <fieldset class="popup__fieldset popup__fieldsetA">
+              <input
+                type="url"
+                name="input-url"
+                id="input-jobimg"
+                class="popup__input popup__input-profesion popup__input-linkadd popup__input-avatar"
+                placeholder="Image link"
+                required
+              />
+              <p class="popup__error-profesion" id="input-jobimg-error"></p>
+            </fieldset>
+            <button
+              class="button popup__button popup__button-typesave"
+              id="submit__avatar"
+            >
+              Create
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- confirmacion -->
+    <div class="popup" id="popup__confirmacion">
+      <div class="popup__content popup__content-conf">
+        <div class="popup__containerConf">
+          <button
+            class="button popup__button-typeclose popup__button-typecloseadd"
+          ></button>
+          <span class="popup__titleConf">¿Estás seguro?</span>
+          <form class="popup__form popup__form-conf">
+            <button
+              class="button popup__button popup__confirm-button"
+              id="submit__add"
+            >
+              SI
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   </body>

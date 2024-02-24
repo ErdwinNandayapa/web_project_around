@@ -6,7 +6,8 @@
   padding-top: 2.4rem;
 }
 .profile__avatar {
-  max-width: 168.75px;
+  width: 107.75px;
+  height: 96px;
   border-radius: 50%;
 }
 .profile__container {
@@ -108,6 +109,7 @@
   .profile__name {
     font-size: 28px;
     line-height: 28px;
+    max-width: 248px;
   }
   .profile__edit {
     flex-basis: 46%;
