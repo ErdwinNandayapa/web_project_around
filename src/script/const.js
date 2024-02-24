@@ -48,7 +48,7 @@ export const profileAbout = document.querySelector(".profile__profession");
 export const buttonSubmitCard = document.querySelector("#submit__add");
 export const popupSubmitProfile = document.querySelector("#popup__profile");
 export const popupSubmitAvatar = document.querySelector("#submit__avatar");
-export const headerAvatar = document.querySelector(".header__button");
+export const headerAvatar = document.querySelector(".profile__overlay__button");
 export const popupWithFormAdd = new PopupWithForm(
   "#popup__add",
   formSubmitHandlerAdd
