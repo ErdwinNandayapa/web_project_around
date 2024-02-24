@@ -65,14 +65,14 @@ class Api {
       .catch((error) => console.error("Error:", error));
   }
   likeCard(id, isLiked) {
-    const method = isLiked ? "DELETE" : "PUT"; // Determina el método basado en si ya se ha dado "me gusta" o no
+    const method = isLiked ? "DELETE" : "PUT";
     return fetch(`${this.baseUrl}/cards/likes/${id}`, {
       method: method,
       headers: this.headers,
     })
       .then((res) => {
         if (!res.ok) throw new Error(`Server error: ${res.status}`);
-        return res.json(); // La respuesta incluirá el estado actualizado de "me gusta", incluyendo el conteo
+        return res.json();
       })
       .catch((error) => console.error("Error:", error));
   }
@@ -93,15 +93,6 @@ class Api {
   }
 }
 
-export const api = new Api("https://around.nomoreparties.co/v1/web_es_08/", {
-  authorization: "cebd400e-cb13-478f-a576-1969697c9570",
+export const api = new Api("https://around.nomoreparties.co/v1/web_es_12/", {
+  authorization: "8521445e-72d9-4062-8af0-0d806de221f7",
 });
-
-api.getInitialCards().then((cards) => console.log(cards));
-
-// Use the api object to make requests
-// api.getCards().then((cards) => console.log(cards));
-// api.getUserInfo().then((userInfo) => console.log(userInfo));
-// api
-//   .updateUserInfo("Marie Skłodowska Curie", "Físico y químicos")
-//   .then((updatedUserInfo) => console.log(updatedUserInfo));

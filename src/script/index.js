@@ -122,7 +122,7 @@ headerAvatar.addEventListener("click", openProfileAvatar);
 api.getInitialCards().then((cards) => {
   defaultCardList = new Section(
     {
-      data: cards, //  obtenidos de la API
+      data: cards,
       renderer: (item) => {
         const { name, link, _id, likes } = item;
         const card = new Card(

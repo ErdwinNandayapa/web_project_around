@@ -19,7 +19,7 @@ export default class FormValidator {
     const submitButtonElement = formElement.querySelector(
       this.submitButtonSelector
     );
-    // submitButtonElement.classList.add(this.inactiveButtonClass);
+
     this.toggleSubmitButton(submitButtonElement, formElement);
 
     inputElements.forEach((inputElement) => {
