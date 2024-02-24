@@ -274,7 +274,7 @@
   cursor: not-allowed;
   pointer-events: none;
 }
-.profile__overlay__button {
+.profile__buttonAvatar {
   background-image: url(../images/edit_button.svg);
   background-repeat: no-repeat;
   background-color: transparent;
@@ -285,7 +285,7 @@
   left: 33px;
   top: 25px;
 }
-.profile__overlay__button:hover {
+.profile__buttonAvatar:hover {
   animation: rotate 1.5s linear infinite;
 }
 .profile__overlay {
