@@ -274,7 +274,7 @@
   cursor: not-allowed;
   pointer-events: none;
 }
-.header__button {
+.profile__overlay__button {
   background-image: url(../images/edit_button.svg);
   background-repeat: no-repeat;
   background-color: transparent;
@@ -285,7 +285,7 @@
   left: 33px;
   top: 25px;
 }
-.header__button:hover {
+.profile__overlay__button:hover {
   animation: rotate 1.5s linear infinite;
 }
 .profile__overlay {
@@ -355,15 +355,6 @@
     width: 433px;
     height: 540px;
   }
-  .popup__fieldsetA {
-    padding-right: 0;
-  }
-  .popup__input-avatar {
-    width: 98%;
-  }
-  .popup__confirm-button {
-    width: 81%;
-  }
 }
 
 @media screen and (max-width: 768px) {
@@ -378,5 +369,14 @@
   .popup__content {
     max-width: 282px;
     height: 322px;
+  }
+  .popup__fieldsetA {
+    padding-right: 0;
+  }
+  .popup__input-avatar {
+    width: 98%;
+  }
+  .popup__confirm-button {
+    width: 81%;
   }
 }
